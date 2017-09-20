@@ -1,1 +1,1 @@
-# XMediaGo
+![logo][https://raw.githubusercontent.com/jcodeing/xmediago/master/readme/kmedia_logo.png]
