@@ -17,7 +17,7 @@ KMedia framwork can be obtained from JCenter. It's also possible add submodule t
 
 #### From JCenter ####
 [![KMedia-Core](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/icon/kmedia_core.png)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)
-[![Download](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/icon/kmedia_exo.png)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)[![Download](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/icon/kmedia_uie.png)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)
+[![Download](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/icon/kmedia_exo.png)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)[![Download](https://cdn.rawgit.com/jcodeing/XMediaGo/master/readme/icon/kmedia_uie.svg)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)
 ```gradle
 compile 'com.jcodeing:kmedia-core:r1.0.10' //Core module *
 compile 'com.jcodeing:kmedia-uie:r1.0.10' //Ui extension module

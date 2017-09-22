@@ -12,6 +12,7 @@ KMedia modules can be obtained from JCenter. It's also possible to clone the rep
 [![Download](https://api.bintray.com/packages/jcodeing/kmedia/kmedia-core/images/download.svg)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)
 [![KMedia-Core](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/icon/kmedia_core.png)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)
 [![Download](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/icon/kmedia_exo.png)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)[![Download](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/icon/kmedia_uie.png)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)
+[![](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo.svg)]
 
 https://jcodeing.github.io/KMedia-Core/
 git submodule add git@github.com:jcodeing/KMedia-Core.git libKMediaCore
