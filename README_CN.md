@@ -8,11 +8,22 @@
 ### 使用
 KMedia modules can be obtained from JCenter. It's also possible to clone the repository and depend on the modules locally.
 
+#### From JCenter ####
+[![KMedia-Core](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core.svg)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)
+[![KMedia-Uie](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie.svg)](https://bintray.com/jcodeing/kmedia/kmedia-uie/_latestVersion)
+[![KMedia-Exo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo.svg)](https://bintray.com/jcodeing/kmedia/kmedia-exo/_latestVersion)
+```gradle
+compile 'com.jcodeing:kmedia-core:r1.0.10' //Core module *
+compile 'com.jcodeing:kmedia-uie:r1.0.10' //Ui extension module
+compile 'com.jcodeing:kmedia-exo:r1.0.10' //Media player extension module
+```
 
-[![Download](https://api.bintray.com/packages/jcodeing/kmedia/kmedia-core/images/download.svg)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)
-[![KMedia-Core](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/icon/kmedia_core.png)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)
-[![Download](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/icon/kmedia_exo.png)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)[![Download](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/icon/kmedia_uie.png)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)
-[![](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo.svg)]
+#### Add Submodule ####
+```command
+git submodule add git@github.com:*****/KMedia-Core.git libKMediaCore
+git submodule add git@github.com::*****/KMedia-Uie.git libKMediaUie
+git submodule add git@github.com::*****/KMedia-Mpe.git libKMediaMpe
+```
 
 https://jcodeing.github.io/KMedia-Core/
 git submodule add git@github.com:jcodeing/KMedia-Core.git libKMediaCore
