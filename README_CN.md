@@ -17,13 +17,23 @@ compile 'com.jcodeing:kmedia-exo:r1.0.10' //媒体引擎扩展模块 (可选)
 ```
 
 ### 添加Submodule到工程
-[![KMedia-Core](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core_fork.svg)](https://github.com/jcodeing/KMedia-Core/fork) [![KMedia-Uie](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie_ford.svg)](https://github.com/jcodeing/KMedia-Uie/fork) [![KMedia-Exo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo_fork.svg)](https://github.com/jcodeing/KMedia-Exo/fork)
-首先Fork(点击上方按钮)模块仓库到你的Github.
-然后
+[![KMedia-Core-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core_fork.svg)](https://github.com/jcodeing/KMedia-Core/fork) [![KMedia-Uie-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie_fork.svg)](https://github.com/jcodeing/KMedia-Uie/fork) [![KMedia-Exo-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo_fork.svg)](https://github.com/jcodeing/KMedia-Exo/fork)
+
+#### Step 1: Fork(↑)模块仓库到你的Github.
+
+#### Step 2: 在你工程的根目录, 用 `git` 命令添加子模块.
 ```sh
-git submodule add git@github.com:*****/KMedia-Core.git kmedia-core
-git submodule add git@github.com::*****/KMedia-Uie.git kmedia-uie
-git submodule add git@github.com::*****/KMedia-Mpe.git kmedia-mpe
+git submodule add git@github.com:*user*/KMedia-Core.git kmedia-core //核心模块 *
+git submodule add git@github.com::*user*/KMedia-Uie.git kmedia-uie //界面扩展模块 (可选)
+git submodule add git@github.com::*user*/KMedia-Mpe.git kmedia-mpe //媒体引擎扩展模块 (可选)
+```
+
+#### Step 3: 根据上面所添加的子模块配置你工程的 `settings.gradle` 文件.
+```gradle
+include ':kmedia-core'
+include ':kmedia-uie'
+include ':exo'
+project(':exo').projectDir = new File(settingsDir, 'mpe/exo')
 ```
 
 https://jcodeing.github.io/KMedia-Core/
