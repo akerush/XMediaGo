@@ -27,8 +27,3 @@ git submodule add git@github.com:*****/KMedia-Core.git libKMediaCore
 git submodule add git@github.com::*****/KMedia-Uie.git libKMediaUie
 git submodule add git@github.com::*****/KMedia-Mpe.git libKMediaMpe
 ```
-
-
-![logo](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_sr_1.gif)
-![logo](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_ui.gif)
-![logo](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_sr_2.gif)
