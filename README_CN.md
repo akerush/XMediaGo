@@ -8,15 +8,19 @@
 ## 使用
 KMedia框架可以直接从JCenter添加依赖, 或者以子模块的形式添加到工程中.
 
-### From JCenter [![KMedia-Core](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core.svg)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion) [![KMedia-Uie](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie.svg)](https://bintray.com/jcodeing/kmedia/kmedia-uie/_latestVersion) [![KMedia-Exo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo.svg)](https://bintray.com/jcodeing/kmedia/kmedia-exo/_latestVersion)
+### 从JCenter添加依赖
+[![KMedia-Core](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion) [![KMedia-Uie](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-uie/_latestVersion) [![KMedia-Exo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-exo/_latestVersion)
 ```gradle
 compile 'com.jcodeing:kmedia-core:r1.0.10' //核心模块 *
 compile 'com.jcodeing:kmedia-uie:r1.0.10' //界面扩展模块 (可选)
 compile 'com.jcodeing:kmedia-exo:r1.0.10' //媒体引擎扩展模块 (可选)
 ```
 
-### Add Submodule [![KMedia-Core](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core.svg)](https://github.com/jcodeing/KMedia-Core) [![KMedia-Uie](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie.svg)](https://github.com/jcodeing/KMedia-Uie) [![KMedia-Exo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo.svg)](https://github.com/jcodeing/KMedia-Exo)
-```command
+### 添加Submodule到工程
+[![KMedia-Core](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core_fork.svg)](https://github.com/jcodeing/KMedia-Core/fork) [![KMedia-Uie](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie_ford.svg)](https://github.com/jcodeing/KMedia-Uie/fork) [![KMedia-Exo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo_fork.svg)](https://github.com/jcodeing/KMedia-Exo/fork)
+首先Fork(点击上方按钮)模块仓库到你的Github.
+然后
+```sh
 git submodule add git@github.com:*****/KMedia-Core.git kmedia-core
 git submodule add git@github.com::*****/KMedia-Uie.git kmedia-uie
 git submodule add git@github.com::*****/KMedia-Mpe.git kmedia-mpe
