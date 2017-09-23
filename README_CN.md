@@ -6,9 +6,9 @@
 包括 `视频浮窗/拖动/调整位置大小` `竖屏/全屏自动切换` `全屏锁定` `手势调整亮度/音量/进度` `字幕/切换/拖动` `视频段落/间隔复读` `视频续集/列表/循环播放` `动态切换视频控制层` `控制层分离`... 等功能的快速实现.
 
 ## 使用
-KMedia框架可以直接从JCenter添加依赖, 或者以子模块的形式添加到工程中.
+KMedia框架可以直接从JCenter添加依赖, 或者以子模块的形式添加到工程中后再依赖.
 
-### 从JCenter添加依赖
+### 从JCenter添加依赖 `快捷`
 [![KMedia-Core](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion) [![KMedia-Uie](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-uie/_latestVersion) [![KMedia-Exo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-exo/_latestVersion)
 ```gradle
 compile 'com.jcodeing:kmedia-core:r1.0.10' //核心模块
@@ -16,7 +16,7 @@ compile 'com.jcodeing:kmedia-uie:r1.0.10' //界面扩展模块 (可选)
 compile 'com.jcodeing:kmedia-exo:r1.0.10' //媒体引擎扩展模块 (可选)
 ```
 
-### 添加Submodule到工程
+### 添加Submodule到工程 `自定义强`
 [![KMedia-Core-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core_fork.svg)](https://github.com/jcodeing/KMedia-Core/fork) [![KMedia-Uie-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie_fork.svg)](https://github.com/jcodeing/KMedia-Uie/fork) [![KMedia-Exo-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo_fork.svg)](https://github.com/jcodeing/KMedia-Exo/fork)
 
 #### Step 1: Fork(↑)模块仓库到你的Github.
@@ -35,7 +35,7 @@ include ':exo'
 project(':exo').projectDir = new File(settingsDir, 'mpe/exo')
 ```
 
-#### Step 4: 经过上面的添加配置步骤后, 你就可以在本地直接依赖KMedia的各个模块了.
+#### Step 4: 经过上面的添加配置步骤后, 你就可以在本地依赖并随时开发自定义KMedia的各个模块.
 ```gradle
 compile project(':kmedia-core')
 compile project(':kmedia-uie')
@@ -58,6 +58,8 @@ https://jcodeing.github.io/KMedia-Core/
 
 
 ### 开发
+git clone https://github.com/jcodeing/KMedia.git
+
 git submodule init
 git submodule update
 
