@@ -5,30 +5,27 @@
 以及, 对视频播放实现方面的封装. 其中将视频视图主要分为:绘制层 控制组 控制层, 三个部分. 能够快速并灵活的实现目前视频相关应用的大部分功能,
 包括 `视频浮窗/拖动/调整位置大小` `竖屏/全屏自动切换` `全屏锁定` `手势调整亮度/音量/进度` `字幕/切换/拖动` `视频段落/间隔复读` `视频续集/列表/循环播放` `动态切换视频控制层` `控制层分离`... 等功能的快速实现.
 
-### 使用
-KMedia modules can be obtained from JCenter. It's also possible to clone the repository and depend on the modules locally.
+## 使用
+KMedia框架可以直接从JCenter添加依赖, 或者以子模块的形式添加到工程中.
 
-#### From JCenter ####
-[![KMedia-Core](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core.svg)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion)
-[![KMedia-Uie](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie.svg)](https://bintray.com/jcodeing/kmedia/kmedia-uie/_latestVersion)
-[![KMedia-Exo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo.svg)](https://bintray.com/jcodeing/kmedia/kmedia-exo/_latestVersion)
+### From JCenter [![KMedia-Core](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core.svg)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion) [![KMedia-Uie](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie.svg)](https://bintray.com/jcodeing/kmedia/kmedia-uie/_latestVersion) [![KMedia-Exo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo.svg)](https://bintray.com/jcodeing/kmedia/kmedia-exo/_latestVersion)
 ```gradle
-compile 'com.jcodeing:kmedia-core:r1.0.10' //Core module *
-compile 'com.jcodeing:kmedia-uie:r1.0.10' //Ui extension module
-compile 'com.jcodeing:kmedia-exo:r1.0.10' //Media player extension module
+compile 'com.jcodeing:kmedia-core:r1.0.10' //核心模块 *
+compile 'com.jcodeing:kmedia-uie:r1.0.10' //界面扩展模块 (可选)
+compile 'com.jcodeing:kmedia-exo:r1.0.10' //媒体引擎扩展模块 (可选)
 ```
 
-#### Add Submodule ####
+### Add Submodule [![KMedia-Core](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core.svg)](https://github.com/jcodeing/KMedia-Core) [![KMedia-Uie](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie.svg)](https://github.com/jcodeing/KMedia-Uie) [![KMedia-Exo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo.svg)](https://github.com/jcodeing/KMedia-Exo)
 ```command
-git submodule add git@github.com:*****/KMedia-Core.git libKMediaCore
-git submodule add git@github.com::*****/KMedia-Uie.git libKMediaUie
-git submodule add git@github.com::*****/KMedia-Mpe.git libKMediaMpe
+git submodule add git@github.com:*****/KMedia-Core.git kmedia-core
+git submodule add git@github.com::*****/KMedia-Uie.git kmedia-uie
+git submodule add git@github.com::*****/KMedia-Mpe.git kmedia-mpe
 ```
 
 https://jcodeing.github.io/KMedia-Core/
-git submodule add git@github.com:jcodeing/KMedia-Core.git libKMediaCore
-git submodule add git@github.com:jcodeing/KMedia-Uie.git libKMediaUie
-git submodule add git@github.com:jcodeing/KMedia-Mpe.git libKMediaMpe
+git submodule add git@github.com:jcodeing/KMedia-Core.git kmedia-core
+git submodule add git@github.com:jcodeing/KMedia-Uie.git kmedia-uie
+git submodule add git@github.com:jcodeing/KMedia-Mpe.git kmedia-mpe
 
 
 git submodule init
@@ -38,6 +35,11 @@ framework 采用submodule 方便用户直接将git引入自己的项目 实时�
 github/kmediaframework 引入自己的工程做submodule 然后这个submodule再add remove branch->KMediaFramwork)
 
 ### 演示
+```java
+Player player = new Player(this).init(new AndroidMediaPlayer());
+((PlayerView) findViewById(R.id.k_player_view)).setPlayer(player);
+player.play(Uri.parse("http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4"));
+```
 
 
 ### 开发

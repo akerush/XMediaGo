@@ -1,9 +1,5 @@
 ![logo](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/kmedia_logo.png)
-----
-![logo](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_sr_1.gif)
-![logo](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_ui.gif)
-![logo](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_sr_2.gif)
-----
+
 KMedia是一个Android应用级媒体框架,它可以助你快速搭建媒体应用.
 内部重新定义Android MediaPlayer API并对其封装, 简化和扩展一些原生API不支持的功能.
 其中涵盖了, PlayAB ABLoop PositionUnitLoop PlaybackSpeed MediaQueue PlayerService/Binding
@@ -31,3 +27,8 @@ git submodule add git@github.com:*****/KMedia-Core.git libKMediaCore
 git submodule add git@github.com::*****/KMedia-Uie.git libKMediaUie
 git submodule add git@github.com::*****/KMedia-Mpe.git libKMediaMpe
 ```
+
+
+![logo](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_sr_1.gif)
+![logo](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_ui.gif)
+![logo](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_sr_2.gif)
