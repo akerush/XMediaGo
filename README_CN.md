@@ -327,6 +327,7 @@ P setPositionUnitLoopIndexList(ArrayList<Integer> posUnitLoopIndexList);
 ```
 ### [API - IMediaPlayer](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/IMediaPlayer.java)
 如果你想扩展媒体引擎, 可以去实现IMediaPlayer接口.
+
 #### Source
 ```java
 void setDataSource(String path);
@@ -335,6 +336,28 @@ void setDataSource(Context context, Uri uri, Map<String, String> headers);
 void setDataSource(FileDescriptor fd);
 Uri getDataSource();
 void prepareAsync();
+```
+
+#### Control
+```java
+boolean start();
+boolean pause();
+boolean seekTo(long ms);
+void stop();
+```
+
+#### Control
+```java
+void setAudioStreamType(int streamtype);
+void setVolume(float leftVolume, float rightVolume);
+void setDisplay(SurfaceHolder sh);
+void setSurface(Surface surface);
+void setScreenOnWhilePlaying(boolean screenOn);
+void setLooping(boolean looping);
+boolean isLooping();
+int getVideoWidth();
+int getVideoHeight();
+int getAudioSessionId();
 ```
 
 ### [Public KID](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/res/values/ids.xml)
