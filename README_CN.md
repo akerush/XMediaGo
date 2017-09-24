@@ -86,7 +86,7 @@ layer.play(Uri.parse("video"));
 player.shutdown();
 vFloatingWinControler.hide();
 ```
-温馨提示,请根据你的具体使用需求合理申请WINDOW权限. [点击查看源码片段][https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)]
+温馨提示,请根据你的具体使用需求合理申请WINDOW权限. [点击查看源码片段](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)
 ```java
 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || OS.i().isMIUI()) {
   //<!--Using WindowManager.LayoutParams.TYPE_PHONE For Floating　Window　View-->
@@ -261,7 +261,7 @@ player = new PlayerBinding(this, PlayerService.class, new BindPlayer() {
 }
 ```
 
-### Example X: 更多例子请参考KMedia-Demo
+### Example X: 更多例子参考
 
 #### [MainActivity](/demo/src/main/java/com/jcodeing/kmedia/demo/MainActivity.java)
 * [activity_main](/demo/src/main/res/layout/activity_main.xml) & [ctrl_layer_custom_main](/demo/src/main/res/layout/ctrl_layer_custom_main.xml)  
@@ -278,7 +278,7 @@ player = new PlayerBinding(this, PlayerService.class, new BindPlayer() {
 * [VideoQueueLandCtrlLayer](/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueLandCtrlLayer.java) & [ctrl_layer_land_queue](/demo/src/main/res/layout/ctrl_layer_land_queue.xml) &  [item_video_queue_land](/demo/src/main/res/layout/item_video_queue_land.xml)
 
 #### [VideoMultipleActivity](/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleActivity.java)
-* [layout_activity_multiple_video](/demo/src/main/res/layout/activity_multiple_video.xml)  
+* [activity_multiple_video](/demo/src/main/res/layout/activity_multiple_video.xml)  
 * [VideoMultipleFloatingView](/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleFloatingView.java) & [floating_video_view_multiple](/demo/src/main/res/layout/floating_video_view_multiple.xml)
 
 
