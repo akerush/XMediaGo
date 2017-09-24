@@ -1,4 +1,4 @@
-![KMedia-Logo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_logo.svg)
+[![KMedia-Logo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_logo.svg)][download_demo_apk]
 
 一个为Android打造的应用级媒体框架,它可以助你快速搭建媒体应用.内部重新定义Android MediaPlayer API并对其封装, 简化和扩展一些原生API不支持的功能.
 其中涵盖了, `AB播放/循环` `位置单元/间隔/循环` `变速播放` `媒体队列管理` `媒体服务/绑定` `音频后台/通知栏控制` `媒体按键自定义处理` `音频焦点管理` `媒体引擎切换/扩展`... 等功能的快速实现.
@@ -46,11 +46,10 @@ compile project(':kmedia-exo')
 ```
 
 ## 演示
-![Demo-Screen-Record-1](https://raw.githubusercontent.com/jcodeing/KMedia/release/readme/demo_sr_1.gif)
-![Demo-Ui](https://raw.githubusercontent.com/jcodeing/KMedia/release/readme/demo_ui.gif)
-![Demo-Screen-Record-2](https://raw.githubusercontent.com/jcodeing/KMedia/release/readme/demo_sr_2.gif)
+[![Demo-Screen-Record-1](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_sr_1.gif)][download_demo_apk][![Demo-Ui](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_ui.gif)][download_demo_apk][![Demo-Screen-Record-2](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_sr_2.gif)][download_demo_apk]
 
-### [点击下载Demo](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_release.apk "KMedia Demo 4.9 MB")
+### [点击下载 Demo][download_demo_apk]
+[download_demo_apk]: https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_release.apk  "Click Download KMedia Demo 4.9 MB"
 ```
 k, 2017-9-24, PrivateKeyEntry,
 证书指纹 (SHA1): 43:79:8C:03:1A:8A:2A:E8:CC:CA:D4:E3:63:9A:0F:70:29:C4:69:9B
@@ -451,7 +450,7 @@ KMedia各个Module中不会去主动申请任何相关权限,
 对于部分需要权限的API, 会加上注解 `RequiresPermission` 来提醒开发者去申请权限.  
 值得注意的是, 在显示浮窗相关的API处, 如果需要做兼容处理时, 需要使用到WINDOW权限.  
 此处并未加权限注解, 但在源码中有详细的注释, 上文中也提到了这点.  
-因为不是所有用户都需要去做兼容浮窗. 这个就要根据你的具体使用需求合理申请WINDOW权限.
+因为不是所有用户都需要去做兼容浮窗. 这个就要根据你的具体使用需求合理申请WINDOW权限.  
 还有一些特殊的定制系统, 需要手动处理 `显示悬浮窗`.
 
 ## 开发
