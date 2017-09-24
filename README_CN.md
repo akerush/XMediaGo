@@ -43,12 +43,12 @@ compile project(':kmedia-uie')
 compile project(':kmedia-exo')
 ```
 
-### 演示
+## 演示
 ![Demo-Screen-Record-1](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_sr_1.gif)
 ![Demo-Ui](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_ui.gif)
 ![Demo-Screen-Record-2](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_sr_2.gif)
 
-#### Example 1: 简单的视频播放
+### Example 1: 简单的视频播放
 首先在Layout中添加PlayerView
 ```xml
 <com.jcodeing.kmedia.video.PlayerView
@@ -68,7 +68,7 @@ playerView.finish();
 player.shutdown();
 ```
 
-#### Example 2: 简单的视频浮窗
+### Example 2: 简单的视频浮窗
 把Player交给VideoFloatingWindowController去显示即可浮屏播放
 ```java
 Player player = new Player(context).init(new ExoMediaPlayer(context));
@@ -81,7 +81,7 @@ player.shutdown();
 vFloatingWinControler.hide();
 ```
 
-#### Example 3: 简单的视频全屏
+### Example 3: 简单的视频全屏
 首先在AndroidManifest文件中, 添加configChanges 到你的Activity
 ```xml
 <activity
@@ -106,17 +106,149 @@ public void onConfigurationChanged(Configuration newConfig) {
 playerView.setOrientationHelper(this, 1);//enable sensor
 ```
 
-#### Example X: 更多例子请参考KMedia-Demo
+### Example 3: 简单的使用控制层
+ControlLayerView在Layout中的简单使用
+```xml
+<com.jcodeing.kmedia.video.PlayerView
+  android:id="@id/k_player_view"
+  android:layout_width="match_parent"
+  android:layout_height="200dp">
+  <!--app:use_gesture_detector="true"-->
+  <!--可以开启简单的手势,上下滑动调整音量,左右滑动调整进度,双击播放/暂停等-->
+  <com.jcodeing.kmedia.video.ControlLayerView
+    android:id="@id/k_ctrl_layer_port"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:use_part_left="true"
+    app:use_part_top="true">
+    <!--使用公共id k_ctrl_layer_port 可以标识为竖屏下的默认控制层-->
+    <!--使用公共id k_ctrl_layer_land 可以标识为横屏下的默认控制层-->
 
-### 文档
-https://jcodeing.github.io/KMedia-Core/
+    <!--app:interaction_area_always_visible="true"-->
+    <!--可以使各个Part部分一直为显示状态,不会在超时等情况下自动隐藏 -->
 
-### 注意
+    <!--app:part_top_min_height="17dp"-->
+    <!--该属性可以直接设置顶部Part的最小高度,另外相对应的还有_bottom -->
+
+    <!--View frame explain:
+      |************************|
+      |          top           |
+      |                        |
+      |                        |
+      | left    middle   right |
+      |                        |
+      |                        |
+      |         bottom         |
+      |************************|-->
+     <!--其中top,middle都为默认使用-->
+
+     <!--使用公共id标识你要添加的各个Part-->
+     <!--=========@Top@=========-->
+     <!--android:id="@id/k_ctrl_layer_part_top"-->
+     <!--=========@Bottom@=========-->
+     <!--android:id="@id/k_ctrl_layer_part_bottom"-->
+     <!--=========@Xxx@=========-->
+     <!--android:id="@id/k_ctrl_layer_part_Xxx"-->
+     <XxxxLayout
+       android:id="@id/k_ctrl_layer_part_Xxx"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <!--XxxxLayout你可以随意替换为FrameLayout,RelativeLayout等-->
+       <!--内部你可以随心所欲添加你要的View-->
+       <!--其中可以使用一些公共的Id来快速完成不同的需求-->
+
+       <!--使用@id/k_play 和 @id/k_pause-->
+       <!--内部会自动帮你完成视频播放过程中,播放/暂停控制按钮的各个响应-->
+
+       <!--使用@id/k_position_tv 和 @id/k_duration_tv-->
+       <!--内部会自动按照你的标识,去显示播放进度和总时长-->
+
+       <!--使用@id/k_progress_any 和 @id/k_progress_bar-->
+       <!--内部会帮你处理,播放进展 两个id可以一起使用-->
+       <!--其中k_progress_any可以为你自定的任何View只要实现ProgressAny这个接口-->
+
+       <!--Tips: 这些公共id不局限于Part内部使用,只要在控制层内都可以-->
+     </XxxxLayout>
+     <!--注意: 上面提到的Top,Bottom,Xxx这些方位Part的layout_xx属性
+      都是相对于内部方位容器的, 它们在控制层内的位置是固定的-->
+     <!--注意: 下面这两个Part的layout_xx属性是相对于这个控制层的-->
+     <!--=========@Buffer@=========-->
+     <!--android:id="@id/k_ctrl_layer_part_buffer"-->
+     <!--用于快速标识该View为播放中视频缓冲时显示-->
+     <!--=========@Tips@=========-->
+     <!--android:id="@id/k_ctrl_layer_part_tips_tv"-->
+     <!--这个TextView用于内部小提示,比如手势改变音量等-->
+  </com.jcodeing.kmedia.video.ControlLayerView>
+</com.jcodeing.kmedia.video.PlayerView>
+```
+ControlLayerView在Activity中的简单使用
+```java
+// ============================@ControlLaye@============================
+// 根据自己添加的控制层id,find到控制层View. 下面简单用公共控制层id:k_ctrl_layer_port来演示
+ControlLayerView portCtrlLayer = (ControlLayerView) findViewById(R.id.k_ctrl_layer_port);
+// 在initPart时,注意确保这个Part在Layout中 已经 app:use_part_xxx="true" (默认Part就不用再设置了)
+
+// 
+portTitle = (TextView) portCtrlLayer.initPart(R.id.part_top_tv);
+//Custom top left iv
+portCtrlLayer.initPartIb(R.id.part_top_left_ib,
+    R.drawable.ic_go_back, "goBack").setOnClickListener(this);
+//Custom bottom right iv
+portCtrlLayer.initPartIb(R.id.part_bottom_right_ib,
+    R.drawable.ic_go_full_screen, "goFullScreen").setOnClickListener(this);
+
+//Custom remove position
+portCtrlLayer.removePart(R.id.k_position_tv);
+//Custom remove duration
+portCtrlLayer.removePart(R.id.k_duration_tv);
+//Custom change top background
+portCtrlLayer.findPart(R.id.k_ctrl_layer_part_top)
+    .setBackgroundResource(android.R.color.transparent);
+//Custom change bottom background
+portCtrlLayer.findPart(R.id.k_ctrl_layer_part_bottom)
+    .setBackgroundResource(android.R.color.transparent);
+//Custom change middle background
+portCtrlLayer.findPart(R.id.k_ctrl_layer_part_middle)
+    .setBackgroundResource(android.R.color.transparent);
+//Custom change middle play/pause/buffer size
+((ImageButton) portCtrlLayer.findPart(R.id.k_play,
+    Metrics.dp2px(this, 31f), Metrics.dp2px(this, 31f))).setScaleType(ScaleType.FIT_CENTER);
+((ImageButton) portCtrlLayer.findPart(R.id.k_pause,
+    Metrics.dp2px(this, 31f), Metrics.dp2px(this, 31f))).setScaleType(ScaleType.FIT_CENTER);
+portCtrlLayer.findPart(R.id.part_buffer,
+    Metrics.dp2px(this, 51f), Metrics.dp2px(this, 51f));
+//Custom change tips background
+portCtrlLayer.findPart(R.id.part_tips_tv)
+    .setBackgroundResource(R.color.bg_video_queue_common);
+portCtrlLayer.updateSmartView();
+```
+
+
+
+
+```
+<!--如果这个控制层用于自定义浮窗View中,你还可以使用一下公共id-->
+<!--@id/k_floating_view_close -->
+<!--@id/k_floating_view_drag_location -->
+<!--@id/k_floating_view_drag_size -->
+<!--使用公共id k_floating_xxx 可以帮你快速实现浮窗的,关闭,拖动改变/位置/大小等需求-->
+```
+
+### Example X: 更多例子请参考KMedia-Demo
+
+## 文档
+* The [KMedia-Core](https://jcodeing.github.io/KMedia-Core) JavaDoc
+* The [KMedia-Uie](https://jcodeing.github.io/KMedia-Uie) JavaDoc
+
+### API - Player:
+
+
+## 注意
 权限
 maven 仓库 google
 21低版本 svg
 
-### 开发
+## 开发
 git clone https://github.com/jcodeing/KMedia.git
 
 git submodule init
