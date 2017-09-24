@@ -9,7 +9,7 @@
 KMedia框架可以直接从JCenter添加依赖, 或者以子模块的形式添加到工程后再依赖.
 
 ### 从JCenter添加依赖 `快捷方便`
-[![KMedia-Core](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion) [![KMedia-Uie](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-uie/_latestVersion) [![KMedia-Exo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-exo/_latestVersion)
+[![KMedia-Core](/readme/icon/kmedia_core_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion) [![KMedia-Uie](/readme/icon/kmedia_uie_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-uie/_latestVersion) [![KMedia-Exo](/readme/icon/kmedia_exo_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-exo/_latestVersion)
 ```gradle
 compile 'com.jcodeing:kmedia-core:r1.0.10' //KMedia核心模块
 compile 'com.jcodeing:kmedia-uie:r1.0.10' //KMedia界面扩展模块 (可选)
@@ -17,7 +17,7 @@ compile 'com.jcodeing:kmedia-exo:r1.0.10' //KMedia媒体引擎扩展模块 (可�
 ```
 
 ### 添加Submodule到工程后再依赖 `自定义强`
-[![KMedia-Core-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core_fork.svg)](https://github.com/jcodeing/KMedia-Core/fork) [![KMedia-Uie-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie_fork.svg)](https://github.com/jcodeing/KMedia-Uie/fork) [![KMedia-Exo-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo_fork.svg)](https://github.com/jcodeing/KMedia-Mpe/fork)
+[![KMedia-Core-Fork](/readme/icon/kmedia_core_fork.svg)](https://github.com/jcodeing/KMedia-Core/fork) [![KMedia-Uie-Fork](/readme/icon/kmedia_uie_fork.svg)](https://github.com/jcodeing/KMedia-Uie/fork) [![KMedia-Exo-Fork](readme/icon/kmedia_exo_fork.svg)](https://github.com/jcodeing/KMedia-Mpe/fork)
 
 #### Step 1: Fork(↑)模块仓库到你的Github.
 当然, 你也可以Fork我的仓库到你的私人remote仓库.  
@@ -75,18 +75,18 @@ player.shutdown();
 ```
 
 ### Example 2: 简单的视频浮窗
-把Player交给VideoFloatingWindowController去显示即可浮屏播放.
+#### 把Player交给VideoFloatingWindowController去显示即可浮屏播放.
 ```java
 Player player = new Player(context).init(new ExoMediaPlayer(context));
 new VideoFloatingWindowController(getApplicationContext()).show(player);
 layer.play(Uri.parse("video"));
 ```
-最后当你确定不再播放时, 请调用以下方法去释放资源对象.
+#### 最后当你确定不再播放时, 请调用以下方法去释放资源对象.{#2}
 ```java
 player.shutdown();
 vFloatingWinControler.hide();
 ```
-温馨提示,请根据你的具体使用需求合理申请WINDOW权限. [点击查看源码片段](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)
+#### [温馨提示,请根据你的具体使用需求合理申请WINDOW权限.](#1) [点击查看源码片段](/core/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)
 ```java
 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || OS.i().isMIUI()) {
   //<!--Using WindowManager.LayoutParams.TYPE_PHONE For Floating　Window　View-->
@@ -515,4 +515,6 @@ git remote add fork "Your KMedia-Mpe Remote Repositorie Path"
 可以到你Fork的Github仓库主页, 点击 `Pull request` 去 Create pull request 给我.  
 我看到后, 会第一时间处理你的 request. 从而时KMedia更加完善和强固.
 
+[test1](#1)  
+[test2](#2)
 ### =========================感谢你使用KMedia=========================
