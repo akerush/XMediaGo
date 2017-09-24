@@ -11,29 +11,31 @@ KMedia框架可以直接从JCenter添加依赖, 或者以子模块的形式添�
 ### 从JCenter添加依赖 `快捷`
 [![KMedia-Core](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion) [![KMedia-Uie](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-uie/_latestVersion) [![KMedia-Exo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-exo/_latestVersion)
 ```gradle
-compile 'com.jcodeing:kmedia-core:r1.0.10' //核心模块
-compile 'com.jcodeing:kmedia-uie:r1.0.10' //界面扩展模块 (可选)
-compile 'com.jcodeing:kmedia-exo:r1.0.10' //媒体引擎扩展模块 (可选)
+compile 'com.jcodeing:kmedia-core:r1.0.10' //KMedia核心模块
+compile 'com.jcodeing:kmedia-uie:r1.0.10' //KMedia界面扩展模块 (可选)
+compile 'com.jcodeing:kmedia-exo:r1.0.10' //KMedia媒体引擎扩展模块 (可选)
 ```
 
 ### 添加Submodule到工程后依赖 `自定义强`
 [![KMedia-Core-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core_fork.svg)](https://github.com/jcodeing/KMedia-Core/fork) [![KMedia-Uie-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie_fork.svg)](https://github.com/jcodeing/KMedia-Uie/fork) [![KMedia-Exo-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo_fork.svg)](https://github.com/jcodeing/KMedia-Exo/fork)
 
 #### Step 1: Fork(↑)模块仓库到你的Github.
+当然, 你也可以Fork我的仓库到你的私人remote仓库.  
+这步主要是为了生成一个remote仓库地址.
 
-#### Step 2: 在你工程的根目录, 用 `git` 命令添加子模块.
+#### Step 2: 在你工程的根目录, 用 `git submodule` 命令添加子模块.
 ```sh
-git submodule add git@github.com:*user*/KMedia-Core.git kmedia-core //核心模块
-git submodule add git@github.com::*user*/KMedia-Uie.git kmedia-uie //界面扩展模块 (可选)
-git submodule add git@github.com::*user*/KMedia-Mpe.git kmedia-mpe //媒体引擎扩展模块 (可选)
+git submodule add "KMedia-Core Remote Repositorie Path" kmedia-core
+git submodule add "KMedia-Uie Remote Repositorie Path" kmedia-uie
+git submodule add "KMedia-Mpe Remote Repositorie Path" kmedia-mpe
 ```
 
 #### Step 3: 根据上面所添加的子模块配置你工程的 `settings.gradle` 文件.
 ```gradle
 include ':kmedia-core'
 include ':kmedia-uie'
-include ':exo'
-project(':exo').projectDir = new File(settingsDir, 'mpe/exo')
+include ':kmedia-exo'
+project(':kmedia-exo').projectDir = new File(settingsDir, 'kmedia-mpe/exo')
 ```
 
 #### Step 4: 经过上面的添加配置步骤后, 你就可以在本地依赖并随时开发自定义KMedia的各个模块.
@@ -447,25 +449,33 @@ KMedia各个Module中不会去主动申请任何相关权限,
 因为不是所有用户都需要去做兼容浮窗. 这个就要根据你的具体使用需求合理申请WINDOW权限.
 
 ## 开发
-很高兴大家可以跟我一起来共同开发这个媒体框架.  
-首先你需要将KMedia仓库拉到本地
+很高兴同大家一起来开发KMedia.
+
+### 首先我们做下开发准备工作
+把仓库拉倒本地然后, 用IDE打开它
+
+#### Step 1: 克隆KMedia仓库的开发分支到本地
 ```sh
-git clone https://github.com/jcodeing/KMedia.git
+git clone -b develop https://github.com/jcodeing/KMedia.git
 ```
-然后你需要把KMedia各个模块也拉到本地
+#### Step 2: 初始化KMedia各个模块
+也可以使用 `git submodule` 命令(init & update)来完成
 ```sh
-//你可以使用 git submodule命令来完成
-git submodule init
-git submodule update
-//或者直接在运行
+./init_modules.sh
 ```
+#### Step 3: 添加属于你的远程仓库地址
+远程仓库地址, 可以通过Fork我的各个模块得到.
+```sh
+git remote add fork "KMedia Remote Repositorie Path"
+cd core
+git remote add fork "KMedia-Core Remote Repositorie Path"
+cd uie
+git remote add fork "KMedia-Uie Remote Repositorie Path"
+cd mpe
+git remote add fork "KMedia-Mpe Remote Repositorie Path"
+```
+#### 完成上面的步骤后用IDE(AndroidStudio)打开
 
-framework 采用submodule 方便用户直接将git引入自己的项目 实时同步更新(建议,先fork到自己github 然后将自己的
-github/kmediaframework 引入自己的工程做submodule 然后这个submodule再add remove branch->KMediaFramwork)
-
-
-源码辅助阅读:
-用google style(->url)
-.....
-代码style google
-https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml
+### 其次我们来了解下开发规范
+#### Code Style
+统一使用 [Google Style](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml) 来 Reformat Code
