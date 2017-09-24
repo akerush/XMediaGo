@@ -271,7 +271,7 @@ player = new PlayerBinding(this, PlayerService.class, new BindPlayer() {
 
 #### [AudioQueueActivity](/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueActivity.java)
 * [activity_queue_audio](/demo/src/main/res/layout/activity_queue_audio.xml) & [item_audio_queue](/demo/src/main/res/layout/item_audio_queue.xml)  
-* [AudioQueueNotifier](/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueNotifier.java) & [ANotifier](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/worker/ANotifier.java)
+* [AudioQueueNotifier](/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueNotifier.java)
 
 #### [VideoQueueActivity](/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueActivity.java)
 * [activity_queue_video](/demo/src/main/res/layout/activity_queue_video.xml) & [item_video_queue_port](/demo/src/main/res/layout/item_video_queue_port.xml)  
@@ -286,14 +286,14 @@ player = new PlayerBinding(this, PlayerService.class, new BindPlayer() {
 * The [KMedia-Core](https://jcodeing.github.io/KMedia-Core) JavaDoc
 * The [KMedia-Uie](https://jcodeing.github.io/KMedia-Uie) JavaDoc
 
-### [API - Player](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/IPlayer.java)
-Video
+### [API - IPlayer](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/IPlayer.java)
+#### Video
 ```java
 void setVideo(SurfaceView surfaceView);
 void setVideo(TextureView textureView);
 void clearVideo();
 ```
-AB
+#### AB
 ```java
 P setAB(long startPos, long endPos);
 P setABLoop(int loopMode, int loopInterval);
@@ -302,12 +302,12 @@ P setClearAB(boolean autoClear);
 ///////////////////////////////////////////////////////////
 player.setAB(abStart, abEnd, abLoop, abLoopInterval).play();
 ```
-PlaybackSpeed
+#### PlaybackSpeed
 ```java
 boolean setPlaybackSpeed(float speed);
 float getPlaybackSpeed();
 ```
-SeekTo
+#### SeekTo
 ```java
 boolean seekTo(long ms);
 boolean seekTo(long ms, int processingLevel);
@@ -315,7 +315,7 @@ void seekToPending(long ms);
 long seekToProgress(int progress, int progressMax);
 boolean fastForwardRewind(long ms);
 ```
-PositionUnit
+#### PositionUnit
 ```java
 P setPositionUnitList(IPositionUnitList posUnitList);
 int getCurrentPositionUnitIndex();
@@ -324,6 +324,17 @@ long seekToPositionUnitIndex(int posUnitIndex);
 int calibrateCurrentPositionUnitIndex(long position);
 P setEnabledPositionUnitLoop(boolean enabled, int loopMode, int loopInterval);
 P setPositionUnitLoopIndexList(ArrayList<Integer> posUnitLoopIndexList);
+```
+### [API - IMediaPlayer](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/IMediaPlayer.java)
+如果你想扩展媒体引擎, 可以去实现IMediaPlayer接口.
+#### Source
+```java
+void setDataSource(String path);
+void setDataSource(Context context, Uri uri);
+void setDataSource(Context context, Uri uri, Map<String, String> headers);
+void setDataSource(FileDescriptor fd);
+Uri getDataSource();
+void prepareAsync();
 ```
 
 ### [Public KID](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/res/values/ids.xml)
