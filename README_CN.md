@@ -17,7 +17,7 @@ compile 'com.jcodeing:kmedia-exo:r1.0.10' //KMedia媒体引擎扩展模块 (可�
 ```
 
 ### 添加Submodule到工程后再依赖 `自定义强`
-[![KMedia-Core-Fork](/readme/icon/kmedia_core_fork.svg)](https://github.com/jcodeing/KMedia-Core/fork) [![KMedia-Uie-Fork](/readme/icon/kmedia_uie_fork.svg)](https://github.com/jcodeing/KMedia-Uie/fork) [![KMedia-Exo-Fork](readme/icon/kmedia_exo_fork.svg)](https://github.com/jcodeing/KMedia-Mpe/fork)
+[![KMedia-Core-Fork](/readme/icon/kmedia_core_fork.svg)](https://github.com/jcodeing/KMedia-Core/fork) [![KMedia-Uie-Fork](/readme/icon/kmedia_uie_fork.svg)](https://github.com/jcodeing/KMedia-Uie/fork) [![KMedia-Exo-Fork](/////readme/icon/kmedia_exo_fork.svg)](https://github.com/jcodeing/KMedia-Mpe/fork)
 
 #### Step 1: Fork(↑)模块仓库到你的Github.
 当然, 你也可以Fork我的仓库到你的私人remote仓库.  
@@ -86,7 +86,8 @@ layer.play(Uri.parse("video"));
 player.shutdown();
 vFloatingWinControler.hide();
 ```
-温馨提示,请根据你的具体使用需求合理申请WINDOW权限. [点击查看源码片段](/core/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)
+温馨提示,请根据你的具体使用需求合理申请WINDOW权限. [点击查看源码片段][tt+[/core/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)]
+[[Test][tt]][/core/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)]
 ```java
 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || OS.i().isMIUI()) {
   //<!--Using WindowManager.LayoutParams.TYPE_PHONE For Floating　Window　View-->
@@ -96,6 +97,7 @@ if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || OS.i().isMIUI()) {
   layoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;//2005
 }
 ```
+[tt]: https://github.com/jcodeing/KMedia-Core/blob/release
 
 ### Example 3: 简单的视频全屏
 首先在AndroidManifest文件中, 添加configChanges 到你的Activity.
