@@ -44,15 +44,11 @@ compile project(':kmedia-core')
 compile project(':kmedia-uie')
 compile project(':kmedia-exo')
 ```
-[download_demo_apk]: https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_release.apk  "Click Download KMedia Demo 4.9 MB"
+
 ## 演示
 [![Demo-Screen-Record-1](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_sr_1.gif)][download_demo_apk][![Demo-Ui](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_ui.gif)][download_demo_apk][![Demo-Screen-Record-2](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_sr_2.gif)][download_demo_apk]  
-[\=点击下载 KMedia Demo 4.9 MB\=][download_demo_apk]  
-[\===============点击下载 KMedia Demo 4.9 MB===============][download_demo_apk]  
-
+[\==============================点击下载 KMedia Demo 4.9 MB==============================][download_demo_apk]  
 [download_demo_apk]: https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_release.apk  "Click Download KMedia Demo 4.9 MB"
-
-[===============点击下载 KMedia Demo 4.9 MB===============](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_release.apk)
 ```
 k, 2017-9-24, PrivateKeyEntry,
 证书指纹 (SHA1): 43:79:8C:03:1A:8A:2A:E8:CC:CA:D4:E3:63:9A:0F:70:29:C4:69:9B
