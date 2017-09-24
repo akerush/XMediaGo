@@ -47,7 +47,7 @@ compile project(':kmedia-exo')
 
 ## 演示
 [![Demo-Screen-Record-1](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_sr_1.gif)][download_demo_apk][![Demo-Ui](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_ui.gif)][download_demo_apk][![Demo-Screen-Record-2](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_sr_2.gif)][download_demo_apk]  
-[==========点击下载 KMedia Demo 4.9 MB==========][download_demo_apk]
+[===============点击下载 KMedia Demo 4.9 MB===============][download_demo_apk]  
 [download_demo_apk]: https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_release.apk  "Click Download KMedia Demo 4.9 MB"
 ```
 k, 2017-9-24, PrivateKeyEntry,
