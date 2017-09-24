@@ -49,7 +49,7 @@ compile project(':kmedia-exo')
 
 ## 演示
 [![Demo-Screen-Record-1](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_sr_1.gif)][download_demo_apk][![Demo-Ui](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_ui.gif)][download_demo_apk][![Demo-Screen-Record-2](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_sr_2.gif)][download_demo_apk]  
-[================================点击下载 KMedia Demo 4.9 MB================================][download_demo_apk]
+[===============================点击下载 KMedia Demo 4.9 MB===============================][download_demo_apk]
 ```
 k, 2017-9-24, PrivateKeyEntry,
 证书指纹 (SHA1): 43:79:8C:03:1A:8A:2A:E8:CC:CA:D4:E3:63:9A:0F:70:29:C4:69:9B
@@ -516,4 +516,4 @@ git remote add fork "Your KMedia-Mpe Remote Repositorie Path"
 可以到你Fork的Github仓库主页, 点击 `Pull request` 去 Create pull request 给我.  
 我看到后, 会第一时间处理你的 request. 从而时KMedia更加完善和强固.
 
-### =========================感谢你使用KMedia=========================
+### ===========================感谢你使用KMedia===========================
