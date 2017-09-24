@@ -17,7 +17,7 @@ compile 'com.jcodeing:kmedia-exo:r1.0.10' //KMedia媒体引擎扩展模块 (可�
 ```
 
 ### 添加Submodule到工程后再依赖 `自定义强`
-[![KMedia-Core-Fork](/readme/icon/kmedia_core_fork.svg)](https://github.com/jcodeing/KMedia-Core/fork) [![KMedia-Uie-Fork](/readme/icon/kmedia_uie_fork.svg)](https://github.com/jcodeing/KMedia-Uie/fork) [![KMedia-Exo-Fork](/////readme/icon/kmedia_exo_fork.svg)](https://github.com/jcodeing/KMedia-Mpe/fork)
+[![KMedia-Core-Fork](/readme/icon/kmedia_core_fork.svg)](https://github.com/jcodeing/KMedia-Core/fork) [![KMedia-Uie-Fork](/readme/icon/kmedia_uie_fork.svg)](https://github.com/jcodeing/KMedia-Uie/fork) [![KMedia-Exo-Fork](/readme/icon/kmedia_exo_fork.svg)](https://github.com/jcodeing/KMedia-Mpe/fork)
 
 #### Step 1: Fork(↑)模块仓库到你的Github.
 当然, 你也可以Fork我的仓库到你的私人remote仓库.  
@@ -48,7 +48,7 @@ compile project(':kmedia-exo')
 ## 演示
 [![Demo-Screen-Record-1](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_sr_1.gif)][download_demo_apk][![Demo-Ui](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_ui.gif)][download_demo_apk][![Demo-Screen-Record-2](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_sr_2.gif)][download_demo_apk]
 
-### [点击下载 KMedia Demo 4.9 MB][download_demo_apk]
+[==========点击下载 KMedia Demo 4.9 MB==========][download_demo_apk]
 [download_demo_apk]: https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_release.apk  "Click Download KMedia Demo 4.9 MB"
 ```
 k, 2017-9-24, PrivateKeyEntry,
@@ -86,7 +86,7 @@ layer.play(Uri.parse("video"));
 player.shutdown();
 vFloatingWinControler.hide();
 ```
-温馨提示,请根据你的具体使用需求合理申请WINDOW权限. [点击查看源码片段][tt+[/core/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)]
+温馨提示,请根据你的具体使用需求合理申请WINDOW权限. [点击查看源码片段][https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)]
 [[Test][tt]][/core/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)]
 ```java
 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || OS.i().isMIUI()) {
@@ -97,7 +97,6 @@ if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || OS.i().isMIUI()) {
   layoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;//2005
 }
 ```
-[tt]: https://github.com/jcodeing/KMedia-Core/blob/release
 
 ### Example 3: 简单的视频全屏
 首先在AndroidManifest文件中, 添加configChanges 到你的Activity.
@@ -199,7 +198,7 @@ ControlLayerView在Layout中的简单使用.
   </com.jcodeing.kmedia.video.ControlLayerView>
 </com.jcodeing.kmedia.video.PlayerView>
 ```
-ControlLayerView在Activity中的简单使用. [点击查看源码片段](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueActivity.java#L72-L114)
+ControlLayerView在Activity中的简单使用. [点击查看源码片段](/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueActivity.java#L72-L114)
 ```java
 // ============================@ControlLaye@============================
 // 根据自己添加的控制层id,find到控制层View. 下面简单用控制层KID @id/k_ctrl_layer_port 来演示
@@ -239,7 +238,7 @@ portCtrlLayer.updateSmartView();
 ```xml
 <service android:name="com.jcodeing.kmedia.service.PlayerService"/>
 ```
-然后在Activity中进行PlayerBinding. [点击查看源码片段](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueActivity.java#L91-L125)
+然后在Activity中进行PlayerBinding. [点击查看源码片段](/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueActivity.java#L91-L125)
 ```java
 player = new PlayerBinding(this, PlayerService.class, new BindPlayer() {
   @Override
@@ -265,23 +264,23 @@ player = new PlayerBinding(this, PlayerService.class, new BindPlayer() {
 
 ### Example X: 更多例子请参考KMedia-Demo
 
-#### [MainActivity](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/MainActivity.java)
-* [activity_main](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/activity_main.xml) & [ctrl_layer_custom_main](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/ctrl_layer_custom_main.xml)  
-* [MainPortCtrlLayer](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/MainPortCtrlLayer.java) & [ctrl_layer_port_main](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/ctrl_layer_port_main.xml)  
-* [MainLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/MainLandCtrlLayer.java) & [ctrl_layer_land_main](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/ctrl_layer_land_main.xml)  
-* [MainVFloatingView](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/MainVFloatingView.java) & [floating_video_view_main](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/floating_video_view_main.xml)
+#### [MainActivity](/demo/src/main/java/com/jcodeing/kmedia/demo/MainActivity.java)
+* [activity_main](/demo/src/main/res/layout/activity_main.xml) & [ctrl_layer_custom_main](/demo/src/main/res/layout/ctrl_layer_custom_main.xml)  
+* [MainPortCtrlLayer](/demo/src/main/java/com/jcodeing/kmedia/demo/MainPortCtrlLayer.java) & [ctrl_layer_port_main](/demo/src/main/res/layout/ctrl_layer_port_main.xml)  
+* [MainLandCtrlLayer](/demo/src/main/java/com/jcodeing/kmedia/demo/MainLandCtrlLayer.java) & [ctrl_layer_land_main](/demo/src/main/res/layout/ctrl_layer_land_main.xml)  
+* [MainVFloatingView](/demo/src/main/java/com/jcodeing/kmedia/demo/MainVFloatingView.java) & [floating_video_view_main](/demo/src/main/res/layout/floating_video_view_main.xml)
 
-#### [AudioQueueActivity](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueActivity.java)
-* [activity_queue_audio](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/activity_queue_audio.xml) & [item_audio_queue](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/item_audio_queue.xml)  
-* [AudioQueueNotifier](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueNotifier.java) & [ANotifier](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/worker/ANotifier.java)
+#### [AudioQueueActivity](/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueActivity.java)
+* [activity_queue_audio](/demo/src/main/res/layout/activity_queue_audio.xml) & [item_audio_queue](/demo/src/main/res/layout/item_audio_queue.xml)  
+* [AudioQueueNotifier](/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueNotifier.java) & [ANotifier](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/worker/ANotifier.java)
 
-#### [VideoQueueActivity](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueActivity.java)
-* [activity_queue_video](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/activity_queue_video.xml) & [item_video_queue_port](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/item_video_queue_port.xml)  
-* [VideoQueueLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueLandCtrlLayer.java) & [ctrl_layer_land_queue](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/ctrl_layer_land_queue.xml) &  [item_video_queue_land](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/item_video_queue_land.xml)
+#### [VideoQueueActivity](/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueActivity.java)
+* [activity_queue_video](/demo/src/main/res/layout/activity_queue_video.xml) & [item_video_queue_port](/demo/src/main/res/layout/item_video_queue_port.xml)  
+* [VideoQueueLandCtrlLayer](/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueLandCtrlLayer.java) & [ctrl_layer_land_queue](/demo/src/main/res/layout/ctrl_layer_land_queue.xml) &  [item_video_queue_land](/demo/src/main/res/layout/item_video_queue_land.xml)
 
-#### [VideoMultipleActivity](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleActivity.java)
-* [layout_activity_multiple_video](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/activity_multiple_video.xml)  
-* [VideoMultipleFloatingView](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleFloatingView.java) & [floating_video_view_multiple](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/floating_video_view_multiple.xml)
+#### [VideoMultipleActivity](/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleActivity.java)
+* [layout_activity_multiple_video](/demo/src/main/res/layout/activity_multiple_video.xml)  
+* [VideoMultipleFloatingView](/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleFloatingView.java) & [floating_video_view_multiple](/demo/src/main/res/layout/floating_video_view_multiple.xml)
 
 
 ## 文档
@@ -445,7 +444,7 @@ vectorDrawables.useSupportLibrary = true
 值得注意的是, 如果你的应用需要运行在低于Android 5.0(API 21)的设备上,  
 并使用KMedia中ANotifier的createSimpleMediaNotificationBuilder时,  
 你就要考虑去兼容下低版本中Vector用在Notification上的情况.  
-可以将KMedia中用于Notification的Vector转成png, 放到[Res中.](https://github.com/jcodeing/KMedia/tree/develop/demo/src/main/res) 更多[参见.](https://developer.android.com/studio/write/vector-asset-studio.html?hl=zh-cn)
+可以将KMedia中用于Notification的Vector转成png, 放到[Res中.](/demo/src/main/res) 更多[参见.](https://developer.android.com/studio/write/vector-asset-studio.html?hl=zh-cn)
 
 ### RequiresPermission权限申请
 KMedia各个Module中不会去主动申请任何相关权限,  
