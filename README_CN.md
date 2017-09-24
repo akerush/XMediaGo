@@ -81,13 +81,12 @@ Player player = new Player(context).init(new ExoMediaPlayer(context));
 new VideoFloatingWindowController(getApplicationContext()).show(player);
 layer.play(Uri.parse("video"));
 ```
-最后当你确定不再播放时, 请调用以下方法去释放资源对象.{#2}
+最后当你确定不再播放时, 请调用以下方法去释放资源对象.
 ```java
 player.shutdown();
 vFloatingWinControler.hide();
 ```
 温馨提示,请根据你的具体使用需求合理申请WINDOW权限. [点击查看源码片段][https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)]
-[[Test][tt]][/core/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)]
 ```java
 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || OS.i().isMIUI()) {
   //<!--Using WindowManager.LayoutParams.TYPE_PHONE For Floating　Window　View-->
