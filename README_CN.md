@@ -131,8 +131,8 @@ ControlLayerView在Layout中的简单使用
     android:layout_height="match_parent"
     app:use_part_left="true"
     app:use_part_top="true">
-    <!--使用公共id k_ctrl_layer_port 可以标识为竖屏下的默认控制层-->
-    <!--使用公共id k_ctrl_layer_land 可以标识为横屏下的默认控制层-->
+    <!--使用 KID k_ctrl_layer_port 可以标识为竖屏下的默认控制层-->
+    <!--使用 KID k_ctrl_layer_land 可以标识为横屏下的默认控制层-->
 
     <!--app:interaction_area_always_visible="true"-->
     <!--可以使各个Part部分一直为显示状态,不会在超时等情况下自动隐藏 -->
@@ -152,7 +152,7 @@ ControlLayerView在Layout中的简单使用
       |************************|-->
      <!--其中top,middle都为默认使用-->
 
-     <!--使用公共id标识你要添加的各个Part-->
+     <!--使用 KID 标识你要添加的各个Part-->
      <!--=========@Top@=========-->
      <!--android:id="@id/k_ctrl_layer_part_top"-->
      <!--=========@Bottom@=========-->
@@ -177,7 +177,7 @@ ControlLayerView在Layout中的简单使用
        <!--内部会帮你处理,播放进展 两个id可以一起使用-->
        <!--其中k_progress_any可以为你自定的任何View只要实现ProgressAny这个接口-->
 
-       <!--Tips: 这些公共id不局限于Part内部使用,只要在控制层内都可以-->
+       <!--Tips: 这些 KID 不局限于Part内部使用,只要在控制层内都可以-->
      </XxxxLayout>
      <!--注意: 上面提到的Top,Bottom,Xxx这些方位Part的layout_xx属性
       都是相对于内部方位容器的, 它们在控制层内的位置是固定的-->
@@ -231,7 +231,7 @@ portCtrlLayer.updateSmartView();
 ```xml
 <service android:name="com.jcodeing.kmedia.service.PlayerService"/>
 ```
-然后在Activity中进行PlayerBinding. [点击查看源码片段](https://github.com/jcodeing/KMedia/search?q=Player service bind player,+Binding finish. Can play.)
+然后在Activity中进行PlayerBinding. [点击查看源码片段](https://github.com/jcodeing/KMedia/search?q=PlayerBinding(this,+onFirstBinding+PlayerService+onBindingFinish)
 ```java
 player = new PlayerBinding(this, PlayerService.class, new BindPlayer() {
   @Override
@@ -259,21 +259,21 @@ player = new PlayerBinding(this, PlayerService.class, new BindPlayer() {
 
 #### [MainActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainActivity.java)
 [activity_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_main.xml) & [ctrl_layer_custom_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_custom_main.xml)  
-[MainPortCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainPortCtrlLayer.java) & [ctrl_layer_port_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_port_main.xml)  
-[MainLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainLandCtrlLayer.java) & [ctrl_layer_land_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_land_main.xml)  
-[MainVFloatingView](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainVFloatingView.java) & [floating_video_view_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/floating_video_view_main.xml)
+* [MainPortCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainPortCtrlLayer.java) & [ctrl_layer_port_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_port_main.xml)  
+* [MainLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainLandCtrlLayer.java) & [ctrl_layer_land_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_land_main.xml)  
+* [MainVFloatingView](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainVFloatingView.java) & [floating_video_view_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/floating_video_view_main.xml)
 
 #### [AudioQueueActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueActivity.java)
 [activity_queue_audio](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_queue_audio.xml) & [item_audio_queue](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_audio_queue.xml)  
-[AudioQueueNotifier](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueNotifier.java) & [ANotifier](https://github.com/jcodeing/KMedia-Core/blob/develop/src/main/java/com/jcodeing/kmedia/worker/ANotifier.java)
+* [AudioQueueNotifier](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueNotifier.java) & [ANotifier](https://github.com/jcodeing/KMedia-Core/blob/develop/src/main/java/com/jcodeing/kmedia/worker/ANotifier.java)
 
 #### [VideoQueueActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueActivity.java)
 [activity_queue_video](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_queue_video.xml) & [item_video_queue_port](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_video_queue_port.xml)  
-[VideoQueueLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueLandCtrlLayer.java) & [ctrl_layer_land_queue](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_land_queue.xml) &  [item_video_queue_land](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_video_queue_land.xml)
+* [VideoQueueLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueLandCtrlLayer.java) & [ctrl_layer_land_queue](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_land_queue.xml) &  [item_video_queue_land](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_video_queue_land.xml)
 
 #### [VideoMultipleActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleActivity.java)
 [layout_activity_multiple_video](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_multiple_video.xml)  
-[VideoMultipleFloatingView](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleFloatingView.java) & [floating_video_view_multiple](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/floating_video_view_multiple.xml)
+* [VideoMultipleFloatingView](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleFloatingView.java) & [floating_video_view_multiple](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/floating_video_view_multiple.xml)
 
 
 ## 文档
@@ -320,13 +320,126 @@ P setEnabledPositionUnitLoop(boolean enabled, int loopMode, int loopInterval);
 P setPositionUnitLoopIndexList(ArrayList<Integer> posUnitLoopIndexList);
 ```
 
-### Public
+### [Public KID](https://github.com/jcodeing/KMedia-Core/blob/develop/src/main/res/values/ids.xml)
+```xml
+<!--========================================================-->
+<!--=========@Use prefix "k_" to avoid duplication@=========-->
+<!--========================================================-->
 
+<!--=========@Player@=========-->
+<item name="k_player_view" type="id"/>
+<item name="k_content_frame" type="id"/>
+<item name="k_shutter" type="id"/>
+
+<!--=========@Control@=========-->
+<item name="k_ctrl_group" type="id"/>
+<item name="k_ctrl_layer_port" type="id"/>
+<item name="k_ctrl_layer_land" type="id"/>
+<!--=========@Layer Part-->
+<item name="k_ctrl_layer_part_top" type="id"/>
+<item name="k_ctrl_layer_part_bottom" type="id"/>
+<item name="k_ctrl_layer_part_left" type="id"/>
+<item name="k_ctrl_layer_part_right" type="id"/>
+<item name="k_ctrl_layer_part_middle" type="id"/>
+<item name="k_ctrl_layer_part_buffer" type="id"/>
+<item name="k_ctrl_layer_part_tips_tv" type="id"/>
+<!--=========@Smart View-->
+<item name="k_play" type="id"/>
+<item name="k_pause" type="id"/>
+<item name="k_prev" type="id"/>
+<item name="k_next" type="id"/>
+<item name="k_rew" type="id"/>
+<item name="k_ffwd" type="id"/>
+<item name="k_position_tv" type="id"/>
+<item name="k_duration_tv" type="id"/>
+<item name="k_progress_bar" type="id"/>
+<item name="k_progress_any" type="id"/>
+<!--=========@Extend-->
+<item name="k_switch_control_layer" type="id"/>
+
+<!--=========@Floating@=========-->
+<item name="k_floating_view_close" type="id"/>
+<item name="k_floating_view_drag_location" type="id"/>
+<item name="k_floating_view_drag_size" type="id"/>
+
+<!--=========@....................................@=========-->
+```
+
+### [Pblic Attrs](https://github.com/jcodeing/KMedia-Core/blob/develop/src/main/res/values/attrs.xml)
+```xml
+<!--=========@AControlGroupView@=========-->
+<attr format="boolean" name="use_gesture_detector"/>
+<declare-styleable name="AControlGroupView">
+  <attr format="integer" name="show_timeout"/>
+  <attr format="integer" name="rewind_increment"/>
+  <attr format="integer" name="fast_forward_increment"/>
+  <attr format="reference" name="default_control_layer_id"/>
+  <attr name="use_gesture_detector"/>
+</declare-styleable>
+
+<!--=========@AControlLayerView@=========-->
+<declare-styleable name="AControlLayerView">
+  <attr format="reference" name="control_layer_layout_id"/>
+  <!--=========@Part-->
+  <!--=====@Interaction Area-->
+  <attr format="boolean" name="interaction_area_always_visible"/>
+  <attr format="boolean" name="use_part_top"/>
+  <attr format="boolean" name="use_part_bottom"/>
+  <attr format="boolean" name="use_part_left"/>
+  <attr format="boolean" name="use_part_right"/>
+  <attr format="boolean" name="use_part_middle"/>
+  <attr format="boolean" name="use_part_view_animation"/>
+  <attr format="dimension" name="part_top_min_height"/>
+  <attr format="dimension" name="part_bottom_min_height"/>
+  <!--=====@Other-->
+  <attr format="boolean" name="use_part_buffer"/>
+  <attr format="boolean" name="use_part_tips"/>
+</declare-styleable>
+
+<!--=========@AspectRatioView@=========-->
+<!--Must be kept in sync with AspectRatioView-->
+<attr format="enum" name="resize_mode">
+  <enum name="fit" value="0"/>
+  <enum name="fixed_width" value="1"/>
+  <enum name="fixed_height" value="2"/>
+  <enum name="fill" value="3"/>
+</attr>
+<declare-styleable name="AspectRatioView">
+  <attr name="resize_mode"/>
+</declare-styleable>
+
+<!--=========@APlayerView@=========-->
+<!--Must be kept in sync with APlayerView-->
+<attr format="enum" name="surface_type">
+  <enum name="none" value="0"/>
+  <enum name="surface_view" value="1"/>
+  <enum name="texture_view" value="2"/>
+</attr>
+<declare-styleable name="APlayerView">
+  <attr name="surface_type"/>
+  <attr format="reference" name="player_layout_id"/>
+  <attr format="boolean" name="use_control_group"/>
+  <!--Other-->
+  <attr name="resize_mode"/>
+  <attr name="android:layout_height"/>
+  <attr name="use_gesture_detector"/>
+</declare-styleable>
+
+<!--=========@.................@=========-->
+```
 
 ## 注意
-权限
-maven 仓库 google
-21低版本 svg
+### Vector低版本兼容
+KMedia各个Module中均使用支持库, 来实现Android2.1(API 7)及更高版本中支持VectorDrawable
+```gradle
+vectorDrawables.useSupportLibrary = true
+```
+值得注意的是, 如果你的应用需要运行在低于Android 5.0(API 21)的设备上, 并使用KMedia中ANotifier的createSimpleMediaNotificationBuilder时, 你就要考虑去兼容下低版本中Vector用在Notification上的情况.  
+你可以参考KMedia-Demo中的做法. 将KMedia库中用于Notification显示的Vector转成png, 放到[res中.](https://github.com/jcodeing/KMedia/tree/develop/demo/src/main/res) 更多相关资料[参见.](https://developer.android.com/studio/write/vector-asset-studio.html?hl=zh-cn)
+
+### RequiresPermission权限申请
+KMedia各个Module中不会去主动申请任何相关权限, 对于部分需要权限的API, 会加上注解RequiresPermission来加以提示, 使用者去申请相关权限.  
+值得注意的是, 在显示浮窗相关的API处, 可能使用到WINDOW权限的并未加相关注解, 但在源码中有详细的注释, 上文中也提到了这点. 因为不是所有用户都需要去做兼容浮窗. 这个就要根据你的具体使用需求合理申请WINDOW权限.
 
 ## 开发
 git clone https://github.com/jcodeing/KMedia.git
