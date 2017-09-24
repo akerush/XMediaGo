@@ -2,10 +2,14 @@
 
 [![KMedia-Logo](/readme/icon/kmedia_logo.svg)][download_demo_apk]
 
-一个为Android打造的应用级媒体框架,它可以助你快速搭建媒体应用.内部重新定义Android MediaPlayer API并对其封装, 简化和扩展一些原生API不支持的功能.
-其中涵盖了, `AB播放/循环` `位置单元/间隔/循环` `变速播放` `媒体队列管理` `媒体服务/绑定` `音频后台/通知栏控制` `媒体按键自定义处理` `音频焦点管理` `媒体引擎切换/扩展`... 等功能的快速实现.
-以及, 对视频播放实现方面的封装. 其中将视频视图主要分为:绘制层 控制组 控制层, 三个部分. 能够快速并灵活的实现目前视频相关应用的大部分功能,
-包括 `视频浮窗/拖动/调整位置大小` `竖屏/全屏自动切换` `全屏锁定` `手势调整亮度/音量/进度` `字幕/切换/拖动` `视频段落/间隔复读` `视频续集/列表/循环播放` `动态切换视频控制层` `控制层分离`... 等功能的快速实现.
+一个为Android打造的应用级媒体框架, 它可以助你快速搭建媒体应用.
+内部重新定义Android MediaPlayer API并对其封装, 简化和扩展一些原生API不支持的功能.
+其中涵盖了, `AB播放/循环` `位置单元/间隔/循环` `变速播放` `媒体队列管理` `媒体服务/绑定` `音频后台/通知栏控制`
+`媒体按键自定义处理` `音频焦点管理` `媒体引擎切换/扩展`... 等功能的快速实现.
+以及, 对视频播放实现方面的封装. 其中将视频视图主要分为:绘制层 控制组 控制层, 三个部分.
+能够快速并灵活的实现目前视频相关应用的大部分功能, 包括 `视频浮窗/拖动/调整位置大小` `竖屏/全屏自动切换` `全屏锁定`
+`手势调整亮度/音量/进度` `字幕/切换/拖动` `视频段落/间隔复读` `视频续集/列表/循环播放` `动态切换视频控制层`
+`控制层分离`... 等功能的快速实现.
 
 ## 使用
 KMedia框架可以直接从JCenter添加依赖, 或者以子模块的形式添加到工程后再依赖.
@@ -360,7 +364,7 @@ int getVideoHeight();
 int getAudioSessionId();
 ```
 
-### [Public KID](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/res/values/ids.xml)
+### [Public - KID](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/res/values/ids.xml)
 ```xml
 <!--========================================================-->
 <!--=========@Use prefix "k_" to avoid duplication@=========-->
@@ -405,7 +409,7 @@ int getAudioSessionId();
 <!--=========@....................................@=========-->
 ```
 
-### [Public Attrs](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/res/values/attrs.xml)
+### [Public - Attrs](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/res/values/attrs.xml)
 ```xml
 <!--=========@AControlGroupView@=========-->
 <attr format="boolean" name="use_gesture_detector"/>
