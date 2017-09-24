@@ -258,21 +258,21 @@ player = new PlayerBinding(this, PlayerService.class, new BindPlayer() {
 ### Example X: 更多例子请参考KMedia-Demo
 
 #### [MainActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainActivity.java)
-[activity_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_main.xml) & [ctrl_layer_custom_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_custom_main.xml)  
+* [activity_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_main.xml) & [ctrl_layer_custom_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_custom_main.xml)  
 * [MainPortCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainPortCtrlLayer.java) & [ctrl_layer_port_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_port_main.xml)  
 * [MainLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainLandCtrlLayer.java) & [ctrl_layer_land_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_land_main.xml)  
 * [MainVFloatingView](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainVFloatingView.java) & [floating_video_view_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/floating_video_view_main.xml)
 
 #### [AudioQueueActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueActivity.java)
-[activity_queue_audio](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_queue_audio.xml) & [item_audio_queue](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_audio_queue.xml)  
+* [activity_queue_audio](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_queue_audio.xml) & [item_audio_queue](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_audio_queue.xml)  
 * [AudioQueueNotifier](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueNotifier.java) & [ANotifier](https://github.com/jcodeing/KMedia-Core/blob/develop/src/main/java/com/jcodeing/kmedia/worker/ANotifier.java)
 
 #### [VideoQueueActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueActivity.java)
-[activity_queue_video](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_queue_video.xml) & [item_video_queue_port](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_video_queue_port.xml)  
+* [activity_queue_video](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_queue_video.xml) & [item_video_queue_port](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_video_queue_port.xml)  
 * [VideoQueueLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueLandCtrlLayer.java) & [ctrl_layer_land_queue](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_land_queue.xml) &  [item_video_queue_land](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_video_queue_land.xml)
 
 #### [VideoMultipleActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleActivity.java)
-[layout_activity_multiple_video](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_multiple_video.xml)  
+* [layout_activity_multiple_video](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_multiple_video.xml)  
 * [VideoMultipleFloatingView](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleFloatingView.java) & [floating_video_view_multiple](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/floating_video_view_multiple.xml)
 
 
@@ -434,18 +434,31 @@ KMedia各个Module中均使用支持库, 来实现Android2.1(API 7)及更高版�
 ```gradle
 vectorDrawables.useSupportLibrary = true
 ```
-值得注意的是, 如果你的应用需要运行在低于Android 5.0(API 21)的设备上, 并使用KMedia中ANotifier的createSimpleMediaNotificationBuilder时, 你就要考虑去兼容下低版本中Vector用在Notification上的情况.  
-你可以参考KMedia-Demo中的做法. 将KMedia库中用于Notification显示的Vector转成png, 放到[res中.](https://github.com/jcodeing/KMedia/tree/develop/demo/src/main/res) 更多相关资料[参见.](https://developer.android.com/studio/write/vector-asset-studio.html?hl=zh-cn)
+值得注意的是, 如果你的应用需要运行在低于Android 5.0(API 21)的设备上,  
+并使用KMedia中ANotifier的createSimpleMediaNotificationBuilder时,  
+你就要考虑去兼容下低版本中Vector用在Notification上的情况.  
+可以将KMedia中用于Notification的Vector转成png, 放到[Res中.](https://github.com/jcodeing/KMedia/tree/develop/demo/src/main/res) 更多[参见.](https://developer.android.com/studio/write/vector-asset-studio.html?hl=zh-cn)
 
 ### RequiresPermission权限申请
-KMedia各个Module中不会去主动申请任何相关权限, 对于部分需要权限的API, 会加上注解RequiresPermission来加以提示, 使用者去申请相关权限.  
-值得注意的是, 在显示浮窗相关的API处, 可能使用到WINDOW权限的并未加相关注解, 但在源码中有详细的注释, 上文中也提到了这点. 因为不是所有用户都需要去做兼容浮窗. 这个就要根据你的具体使用需求合理申请WINDOW权限.
+KMedia各个Module中不会去主动申请任何相关权限,  
+对于部分需要权限的API, 会加上注解RequiresPermission来提醒开发者去申请权限.  
+值得注意的是, 在显示浮窗相关的API处, 如果需要做兼容处理时, 需要使用到WINDOW权限.  
+此处并未加权限注解, 但在源码中有详细的注释, 上文中也提到了这点.  
+因为不是所有用户都需要去做兼容浮窗. 这个就要根据你的具体使用需求合理申请WINDOW权限.
 
 ## 开发
+很高兴大家可以跟我一起来共同开发这个媒体框架.  
+首先你需要将KMedia仓库拉到本地
+```sh
 git clone https://github.com/jcodeing/KMedia.git
-
+```
+然后你需要把KMedia各个模块也拉到本地
+```sh
+//你可以使用 git submodule命令来完成
 git submodule init
 git submodule update
+//或者直接在运行
+```
 
 framework 采用submodule 方便用户直接将git引入自己的项目 实时同步更新(建议,先fork到自己github 然后将自己的
 github/kmediaframework 引入自己的工程做submodule 然后这个submodule再add remove branch->KMediaFramwork)
