@@ -46,10 +46,15 @@ compile project(':kmedia-exo')
 ```
 
 ## 演示
-![Demo-Screen-Record-1](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_sr_1.gif)
-![Demo-Ui](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_ui.gif)
-![Demo-Screen-Record-2](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_sr_2.gif)
+![Demo-Screen-Record-1](https://raw.githubusercontent.com/jcodeing/KMedia/release/readme/demo_sr_1.gif)
+![Demo-Ui](https://raw.githubusercontent.com/jcodeing/KMedia/release/readme/demo_ui.gif)
+![Demo-Screen-Record-2](https://raw.githubusercontent.com/jcodeing/KMedia/release/readme/demo_sr_2.gif)
 
+### [点击下载Demo](https://raw.githubusercontent.com/jcodeing/KMedia/release/demo/demo_release.apk "KMedia Demo 4.9 MB")
+```
+k, 2017-9-24, PrivateKeyEntry,
+证书指纹 (SHA1): 43:79:8C:03:1A:8A:2A:E8:CC:CA:D4:E3:63:9A:0F:70:29:C4:69:9B
+```
 ### Example 1: 简单的视频播放
 首先在Layout中添加PlayerView.
 ```xml
@@ -443,10 +448,11 @@ vectorDrawables.useSupportLibrary = true
 
 ### RequiresPermission权限申请
 KMedia各个Module中不会去主动申请任何相关权限,  
-对于部分需要权限的API, 会加上注解RequiresPermission来提醒开发者去申请权限.  
+对于部分需要权限的API, 会加上注解 `RequiresPermission` 来提醒开发者去申请权限.  
 值得注意的是, 在显示浮窗相关的API处, 如果需要做兼容处理时, 需要使用到WINDOW权限.  
 此处并未加权限注解, 但在源码中有详细的注释, 上文中也提到了这点.  
 因为不是所有用户都需要去做兼容浮窗. 这个就要根据你的具体使用需求合理申请WINDOW权限.
+还有一些特殊的定制系统, 需要手动处理 `显示悬浮窗`.
 
 ## 开发
 很高兴同大家一起来开发KMedia. 做开源贡献者的一夸克.
