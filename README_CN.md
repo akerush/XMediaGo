@@ -8,7 +8,7 @@
 ## 使用
 KMedia框架可以直接从JCenter添加依赖, 或者以子模块的形式添加到工程后再依赖.
 
-### 从JCenter添加依赖 `快捷`
+### 从JCenter添加依赖 `快捷方便`
 [![KMedia-Core](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-core/_latestVersion) [![KMedia-Uie](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-uie/_latestVersion) [![KMedia-Exo](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo_release.svg)](https://bintray.com/jcodeing/kmedia/kmedia-exo/_latestVersion)
 ```gradle
 compile 'com.jcodeing:kmedia-core:r1.0.10' //KMedia核心模块
@@ -16,8 +16,8 @@ compile 'com.jcodeing:kmedia-uie:r1.0.10' //KMedia界面扩展模块 (可选)
 compile 'com.jcodeing:kmedia-exo:r1.0.10' //KMedia媒体引擎扩展模块 (可选)
 ```
 
-### 添加Submodule到工程后依赖 `自定义强`
-[![KMedia-Core-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core_fork.svg)](https://github.com/jcodeing/KMedia-Core/fork) [![KMedia-Uie-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie_fork.svg)](https://github.com/jcodeing/KMedia-Uie/fork) [![KMedia-Exo-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo_fork.svg)](https://github.com/jcodeing/KMedia-Exo/fork)
+### 添加Submodule到工程后再依赖 `自定义强`
+[![KMedia-Core-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_core_fork.svg)](https://github.com/jcodeing/KMedia-Core/fork) [![KMedia-Uie-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_uie_fork.svg)](https://github.com/jcodeing/KMedia-Uie/fork) [![KMedia-Exo-Fork](https://github.com/jcodeing/XMediaGo/blob/master/readme/icon/kmedia_exo_fork.svg)](https://github.com/jcodeing/KMedia-Mpe/fork)
 
 #### Step 1: Fork(↑)模块仓库到你的Github.
 当然, 你也可以Fork我的仓库到你的私人remote仓库.  
@@ -25,9 +25,9 @@ compile 'com.jcodeing:kmedia-exo:r1.0.10' //KMedia媒体引擎扩展模块 (可�
 
 #### Step 2: 在你工程的根目录, 用 `git submodule` 命令添加子模块.
 ```sh
-git submodule add "KMedia-Core Remote Repositorie Path" kmedia-core
-git submodule add "KMedia-Uie Remote Repositorie Path" kmedia-uie
-git submodule add "KMedia-Mpe Remote Repositorie Path" kmedia-mpe
+git submodule add "Your KMedia-Core Remote Repositorie Path" kmedia-core
+git submodule add "Your KMedia-Uie Remote Repositorie Path" kmedia-uie
+git submodule add "Your KMedia-Mpe Remote Repositorie Path" kmedia-mpe
 ```
 
 #### Step 3: 根据上面所添加的子模块配置你工程的 `settings.gradle` 文件.
@@ -71,18 +71,18 @@ player.shutdown();
 ```
 
 ### Example 2: 简单的视频浮窗
-把Player交给VideoFloatingWindowController去显示即可浮屏播放
+把Player交给VideoFloatingWindowController去显示即可浮屏播放.
 ```java
 Player player = new Player(context).init(new ExoMediaPlayer(context));
 new VideoFloatingWindowController(getApplicationContext()).show(player);
 layer.play(Uri.parse("video"));
 ```
-最后当你确定不再播放时, 请调用以下方法去释放资源对象
+最后当你确定不再播放时, 请调用以下方法去释放资源对象.
 ```java
 player.shutdown();
 vFloatingWinControler.hide();
 ```
-温馨提示,请根据你的具体使用需求合理申请WINDOW权限. [点击查看源码片段](https://github.com/jcodeing/KMedia-Core/search?q=Using+WindowManager.LayoutParams.TYPE_PHONE)
+温馨提示,请根据你的具体使用需求合理申请WINDOW权限. [点击查看源码片段](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)
 ```java
 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || OS.i().isMIUI()) {
   //<!--Using WindowManager.LayoutParams.TYPE_PHONE For Floating　Window　View-->
@@ -94,13 +94,13 @@ if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || OS.i().isMIUI()) {
 ```
 
 ### Example 3: 简单的视频全屏
-首先在AndroidManifest文件中, 添加configChanges 到你的Activity
+首先在AndroidManifest文件中, 添加configChanges 到你的Activity.
 ```xml
 <activity
   android:configChanges="orientation|keyboardHidden|screenLayout|screenSize"
 </activity>
 ```
-然后在Activity中覆写onConfigurationChanged, 并在方法内处理竖屏/全屏切换时需要隐藏和显示的View
+然后在Activity中覆写onConfigurationChanged, 并在方法内处理横竖屏切换时需要隐藏和显示的View.
 ```java
 @Override
 public void onConfigurationChanged(Configuration newConfig) {
@@ -119,7 +119,7 @@ playerView.setOrientationHelper(this, 1);//enable sensor
 ```
 
 ### Example 4: 简单的使用控制层
-ControlLayerView在Layout中的简单使用
+ControlLayerView在Layout中的简单使用.
 ```xml
 <com.jcodeing.kmedia.video.PlayerView
   android:id="@id/k_player_view"
@@ -131,10 +131,9 @@ ControlLayerView在Layout中的简单使用
     android:id="@id/k_ctrl_layer_port"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:use_part_left="true"
     app:use_part_top="true">
-    <!--使用 KID k_ctrl_layer_port 可以标识为竖屏下的默认控制层-->
-    <!--使用 KID k_ctrl_layer_land 可以标识为横屏下的默认控制层-->
+    <!--使用KID @id/k_ctrl_layer_port 可以标识为竖屏下的默认控制层-->
+    <!--使用KID @id/k_ctrl_layer_land 可以标识为横屏下的默认控制层-->
 
     <!--app:interaction_area_always_visible="true"-->
     <!--可以使各个Part部分一直为显示状态,不会在超时等情况下自动隐藏 -->
@@ -152,7 +151,8 @@ ControlLayerView在Layout中的简单使用
       |                        |
       |         bottom         |
       |************************|-->
-     <!--其中top,middle都为默认使用-->
+     <!--其中bottom,middle都为默认使用-->
+     <!--想用其他Part请设置app:use_part_xxx="true"-->
 
      <!--使用 KID 标识你要添加的各个Part-->
      <!--=========@Top@=========-->
@@ -169,13 +169,13 @@ ControlLayerView在Layout中的简单使用
        <!--内部你可以随心所欲添加你要的View-->
        <!--其中可以使用一些公共的Id来快速完成不同的需求-->
 
-       <!--使用@id/k_play 和 @id/k_pause-->
+       <!--使用KID @id/k_play 和 @id/k_pause-->
        <!--内部会自动帮你完成视频播放过程中,播放/暂停控制按钮的各个响应-->
 
-       <!--使用@id/k_position_tv 和 @id/k_duration_tv-->
+       <!--使用KID @id/k_position_tv 和 @id/k_duration_tv-->
        <!--内部会自动按照你的标识,去显示播放进度和总时长-->
 
-       <!--使用@id/k_progress_any 和 @id/k_progress_bar-->
+       <!--使用KID @id/k_progress_any 和 @id/k_progress_bar-->
        <!--内部会帮你处理,播放进展 两个id可以一起使用-->
        <!--其中k_progress_any可以为你自定的任何View只要实现ProgressAny这个接口-->
 
@@ -193,10 +193,10 @@ ControlLayerView在Layout中的简单使用
   </com.jcodeing.kmedia.video.ControlLayerView>
 </com.jcodeing.kmedia.video.PlayerView>
 ```
-ControlLayerView在Activity中的简单使用
+ControlLayerView在Activity中的简单使用. [点击查看源码片段](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueActivity.java#L72-L114)
 ```java
 // ============================@ControlLaye@============================
-// 根据自己添加的控制层id,find到控制层View. 下面简单用公共控制层id:k_ctrl_layer_port来演示
+// 根据自己添加的控制层id,find到控制层View. 下面简单用控制层KID @id/k_ctrl_layer_port 来演示
 ControlLayerView portCtrlLayer = (ControlLayerView) findViewById(R.id.k_ctrl_layer_port);
 // 在initPart时,注意确保这个Part在Layout中 已经 app:use_part_xxx="true" (默认Part就不用再设置了)
 
@@ -233,7 +233,7 @@ portCtrlLayer.updateSmartView();
 ```xml
 <service android:name="com.jcodeing.kmedia.service.PlayerService"/>
 ```
-然后在Activity中进行PlayerBinding. [点击查看源码片段](https://github.com/jcodeing/KMedia/search?q=PlayerBinding(this,+onFirstBinding+PlayerService+onBindingFinish)
+然后在Activity中进行PlayerBinding. [点击查看源码片段](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueActivity.java#L91-L125)
 ```java
 player = new PlayerBinding(this, PlayerService.class, new BindPlayer() {
   @Override
@@ -259,30 +259,30 @@ player = new PlayerBinding(this, PlayerService.class, new BindPlayer() {
 
 ### Example X: 更多例子请参考KMedia-Demo
 
-#### [MainActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainActivity.java)
-* [activity_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_main.xml) & [ctrl_layer_custom_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_custom_main.xml)  
-* [MainPortCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainPortCtrlLayer.java) & [ctrl_layer_port_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_port_main.xml)  
-* [MainLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainLandCtrlLayer.java) & [ctrl_layer_land_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_land_main.xml)  
-* [MainVFloatingView](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainVFloatingView.java) & [floating_video_view_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/floating_video_view_main.xml)
+#### [MainActivity](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/MainActivity.java)
+* [activity_main](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/activity_main.xml) & [ctrl_layer_custom_main](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/ctrl_layer_custom_main.xml)  
+* [MainPortCtrlLayer](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/MainPortCtrlLayer.java) & [ctrl_layer_port_main](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/ctrl_layer_port_main.xml)  
+* [MainLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/MainLandCtrlLayer.java) & [ctrl_layer_land_main](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/ctrl_layer_land_main.xml)  
+* [MainVFloatingView](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/MainVFloatingView.java) & [floating_video_view_main](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/floating_video_view_main.xml)
 
-#### [AudioQueueActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueActivity.java)
-* [activity_queue_audio](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_queue_audio.xml) & [item_audio_queue](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_audio_queue.xml)  
-* [AudioQueueNotifier](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueNotifier.java) & [ANotifier](https://github.com/jcodeing/KMedia-Core/blob/develop/src/main/java/com/jcodeing/kmedia/worker/ANotifier.java)
+#### [AudioQueueActivity](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueActivity.java)
+* [activity_queue_audio](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/activity_queue_audio.xml) & [item_audio_queue](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/item_audio_queue.xml)  
+* [AudioQueueNotifier](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueNotifier.java) & [ANotifier](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/worker/ANotifier.java)
 
-#### [VideoQueueActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueActivity.java)
-* [activity_queue_video](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_queue_video.xml) & [item_video_queue_port](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_video_queue_port.xml)  
-* [VideoQueueLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueLandCtrlLayer.java) & [ctrl_layer_land_queue](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_land_queue.xml) &  [item_video_queue_land](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_video_queue_land.xml)
+#### [VideoQueueActivity](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueActivity.java)
+* [activity_queue_video](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/activity_queue_video.xml) & [item_video_queue_port](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/item_video_queue_port.xml)  
+* [VideoQueueLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueLandCtrlLayer.java) & [ctrl_layer_land_queue](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/ctrl_layer_land_queue.xml) &  [item_video_queue_land](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/item_video_queue_land.xml)
 
-#### [VideoMultipleActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleActivity.java)
-* [layout_activity_multiple_video](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_multiple_video.xml)  
-* [VideoMultipleFloatingView](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleFloatingView.java) & [floating_video_view_multiple](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/floating_video_view_multiple.xml)
+#### [VideoMultipleActivity](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleActivity.java)
+* [layout_activity_multiple_video](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/activity_multiple_video.xml)  
+* [VideoMultipleFloatingView](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleFloatingView.java) & [floating_video_view_multiple](https://github.com/jcodeing/KMedia/blob/release/demo/src/main/res/layout/floating_video_view_multiple.xml)
 
 
 ## 文档
 * The [KMedia-Core](https://jcodeing.github.io/KMedia-Core) JavaDoc
 * The [KMedia-Uie](https://jcodeing.github.io/KMedia-Uie) JavaDoc
 
-### [API - Player](https://github.com/jcodeing/KMedia-Core/blob/develop/src/main/java/com/jcodeing/kmedia/IPlayer.java)
+### [API - Player](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/java/com/jcodeing/kmedia/IPlayer.java)
 Video
 ```java
 void setVideo(SurfaceView surfaceView);
@@ -322,7 +322,7 @@ P setEnabledPositionUnitLoop(boolean enabled, int loopMode, int loopInterval);
 P setPositionUnitLoopIndexList(ArrayList<Integer> posUnitLoopIndexList);
 ```
 
-### [Public KID](https://github.com/jcodeing/KMedia-Core/blob/develop/src/main/res/values/ids.xml)
+### [Public KID](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/res/values/ids.xml)
 ```xml
 <!--========================================================-->
 <!--=========@Use prefix "k_" to avoid duplication@=========-->
@@ -367,7 +367,7 @@ P setPositionUnitLoopIndexList(ArrayList<Integer> posUnitLoopIndexList);
 <!--=========@....................................@=========-->
 ```
 
-### [Public Attrs](https://github.com/jcodeing/KMedia-Core/blob/develop/src/main/res/values/attrs.xml)
+### [Public Attrs](https://github.com/jcodeing/KMedia-Core/blob/release/src/main/res/values/attrs.xml)
 ```xml
 <!--=========@AControlGroupView@=========-->
 <attr format="boolean" name="use_gesture_detector"/>
@@ -449,7 +449,7 @@ KMedia各个Module中不会去主动申请任何相关权限,
 因为不是所有用户都需要去做兼容浮窗. 这个就要根据你的具体使用需求合理申请WINDOW权限.
 
 ## 开发
-很高兴同大家一起来开发KMedia. 做开源贡献者的一份子.
+很高兴同大家一起来开发KMedia. 做开源贡献者的一夸克.
 
 ### 首先我们做下开发准备工作
 
@@ -465,13 +465,13 @@ git clone -b develop https://github.com/jcodeing/KMedia.git
 #### Step 3: 添加属于你的远程仓库地址
 远程仓库地址, 可以通过Fork我的各个模块得到.
 ```sh
-git remote add fork "KMedia Remote Repositorie Path"
+git remote add fork "Your KMedia Remote Repositorie Path"
 cd core
-git remote add fork "KMedia-Core Remote Repositorie Path"
+git remote add fork "Your KMedia-Core Remote Repositorie Path"
 cd uie
-git remote add fork "KMedia-Uie Remote Repositorie Path"
+git remote add fork "Your KMedia-Uie Remote Repositorie Path"
 cd mpe
-git remote add fork "KMedia-Mpe Remote Repositorie Path"
+git remote add fork "Your KMedia-Mpe Remote Repositorie Path"
 ```
 #### 完成上面的步骤后用IDE(AndroidStudio)打开KMedia
 
@@ -484,7 +484,7 @@ git remote add fork "KMedia-Mpe Remote Repositorie Path"
 为了便于大家阅读和编码, 所以在此统一使用Google Style来Reformat Code.
 
 ##### 代码中使用以下注释条来划分具体的功能模块
-你可以将下面的注释条加入IDE到的Live Templates从而方便使用.
+你可以将下面的注释条, 加入到IDE的Live Templates中, 从而方便使用.
 ```java
 // ============================@Xxx Xxx@============================
 // ============================@Xxx
@@ -493,19 +493,21 @@ git remote add fork "KMedia-Mpe Remote Repositorie Path"
 ```
 ### 最后我们具体谈下从无到有的编码贡献流程.
 #### 首先, 你要有一个需求
-* 优化KMedia
+* 优化KMedia.
 * 解决KMedia的Bug,修复它.
-* 有一个新的Idea想加到KMedia中,让大家一起用
+* 一拍脑门得到一个Idea, 想加到KMedia中, 让大家一起用.
 * 等等...
 
-#### 然后, 你就可以着手开始疯狂编码
-编码过程中, 遵循KMedia的编码规范.
+#### 然后, 你就可以狂甩代码了
+甩码过程中, 请遵循KMedia的编码规范.
 
-#### 其次, 在编码完成一部分后先提交到自己(Fork)的远程仓库
+#### 其次, 注意下, 在编码完成部分后先提交到自己(Fork)的远程仓库
 在准备工作中, 我们各自都有一个属于自己的远程仓库.  
+当代码还是雏形时, 先提交到自己的仓库进行维护.
 同时, 可以随时合并Origin仓库的最新代码.
 
 #### 最后, 当你完成这个需求或者确定要先提交到Origin仓库时
-可以到你Fork的Github仓库主页, 点击 `Pull request` 去Create pull request给我.
+可以到你Fork的Github仓库主页, 点击 `Pull request` 去 Create pull request 给我.  
+我看到后, 会第一时间处理你的 request. 从而时KMedia更加完善和强固.
 
-### 感谢你使用KMedia
+### =========================感谢你使用KMedia=========================
