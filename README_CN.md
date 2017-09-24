@@ -367,7 +367,7 @@ P setPositionUnitLoopIndexList(ArrayList<Integer> posUnitLoopIndexList);
 <!--=========@....................................@=========-->
 ```
 
-### [Pblic Attrs](https://github.com/jcodeing/KMedia-Core/blob/develop/src/main/res/values/attrs.xml)
+### [Public Attrs](https://github.com/jcodeing/KMedia-Core/blob/develop/src/main/res/values/attrs.xml)
 ```xml
 <!--=========@AControlGroupView@=========-->
 <attr format="boolean" name="use_gesture_detector"/>
@@ -449,10 +449,9 @@ KMedia各个Module中不会去主动申请任何相关权限,
 因为不是所有用户都需要去做兼容浮窗. 这个就要根据你的具体使用需求合理申请WINDOW权限.
 
 ## 开发
-很高兴同大家一起来开发KMedia.
+很高兴同大家一起来开发KMedia. 做开源贡献者的一份子.
 
 ### 首先我们做下开发准备工作
-把仓库拉倒本地然后, 用IDE打开它
 
 #### Step 1: 克隆KMedia仓库的开发分支到本地
 ```sh
@@ -474,8 +473,39 @@ git remote add fork "KMedia-Uie Remote Repositorie Path"
 cd mpe
 git remote add fork "KMedia-Mpe Remote Repositorie Path"
 ```
-#### 完成上面的步骤后用IDE(AndroidStudio)打开
+#### 完成上面的步骤后用IDE(AndroidStudio)打开KMedia
 
 ### 其次我们来了解下开发规范
+
 #### Code Style
-统一使用 [Google Style](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml) 来 Reformat Code
+
+##### KMedia 代码统一使用 [Google Style](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml) 来 Reformat Code
+由于KMedia为开源项目, 开发过程中可能会涉及到多种Reformat Code风格,  
+为了便于大家阅读和编码, 所以在此统一使用Google Style来Reformat Code.
+
+##### 代码中使用以下注释条来划分具体的功能模块
+你可以将下面的注释条加入IDE到的Live Templates从而方便使用.
+```java
+// ============================@Xxx Xxx@============================
+// ============================@Xxx
+// =========@Xxx Xxx@=========
+// =========@Xxx
+```
+### 最后我们具体谈下从无到有的编码贡献流程.
+#### 首先, 你要有一个需求
+* 优化KMedia
+* 解决KMedia的Bug,修复它.
+* 有一个新的Idea想加到KMedia中,让大家一起用
+* 等等...
+
+#### 然后, 你就可以着手开始疯狂编码
+编码过程中, 遵循KMedia的编码规范.
+
+#### 其次, 在编码完成一部分后先提交到自己(Fork)的远程仓库
+在准备工作中, 我们各自都有一个属于自己的远程仓库.  
+同时, 可以随时合并Origin仓库的最新代码.
+
+#### 最后, 当你完成这个需求或者确定要先提交到Origin仓库时
+可以到你Fork的Github仓库主页, 点击 `Pull request` 去Create pull request给我.
+
+### 感谢你使用KMedia
