@@ -49,20 +49,20 @@ compile project(':kmedia-exo')
 ![Demo-Screen-Record-2](https://raw.githubusercontent.com/jcodeing/XMediaGo/master/readme/demo_sr_2.gif)
 
 ### Example 1: 简单的视频播放
-首先在Layout中添加PlayerView
+首先在Layout中添加PlayerView.
 ```xml
 <com.jcodeing.kmedia.video.PlayerView
    android:id="@id/k_player_view"
    android:layout_width="match_parent"
    android:layout_height="200dp"/>
 ```
-然后在Activity中将Player设置给PlayerView即可去播放
+然后在Activity中将Player设置给PlayerView即可去播放.
 ```java
 Player player = new Player(context).init(new AndroidMediaPlayer());
 ((PlayerView) findViewById(R.id.k_player_view)).setPlayer(player);
 player.play(Uri.parse("video"));
 ```
-最后当你确定不再播放时, 请调用以下方法去释放资源对象
+最后当你确定不再播放时, 请调用以下方法去释放资源对象.
 ```java
 playerView.finish();
 player.shutdown();
@@ -79,6 +79,16 @@ layer.play(Uri.parse("video"));
 ```java
 player.shutdown();
 vFloatingWinControler.hide();
+```
+温馨提示,请根据你的具体使用需求合理申请WINDOW权限. [点击查看源码片段](https://github.com/jcodeing/KMedia-Core/search?q=Using+WindowManager.LayoutParams.TYPE_PHONE)
+```java
+if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || OS.i().isMIUI()) {
+  //<!--Using WindowManager.LayoutParams.TYPE_PHONE For Floating　Window　View-->
+  //<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+  layoutParams.type = WindowManager.LayoutParams.TYPE_PHONE;//2002
+} else {
+  layoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;//2005
+}
 ```
 
 ### Example 3: 简单的视频全屏
@@ -106,7 +116,7 @@ public void onConfigurationChanged(Configuration newConfig) {
 playerView.setOrientationHelper(this, 1);//enable sensor
 ```
 
-### Example 3: 简单的使用控制层
+### Example 4: 简单的使用控制层
 ControlLayerView在Layout中的简单使用
 ```xml
 <com.jcodeing.kmedia.video.PlayerView
@@ -188,59 +198,129 @@ ControlLayerView在Activity中的简单使用
 ControlLayerView portCtrlLayer = (ControlLayerView) findViewById(R.id.k_ctrl_layer_port);
 // 在initPart时,注意确保这个Part在Layout中 已经 app:use_part_xxx="true" (默认Part就不用再设置了)
 
-// 
+// Use top title
 portTitle = (TextView) portCtrlLayer.initPart(R.id.part_top_tv);
+// 自己处理Title, 如果使用了MediaQueue则可以在onCurrentQueueIndexUpdated(.)回调用更新你的Title
+
 //Custom top left iv
 portCtrlLayer.initPartIb(R.id.part_top_left_ib,
     R.drawable.ic_go_back, "goBack").setOnClickListener(this);
 //Custom bottom right iv
 portCtrlLayer.initPartIb(R.id.part_bottom_right_ib,
     R.drawable.ic_go_full_screen, "goFullScreen").setOnClickListener(this);
+// 自己处理不同Part按钮的点击事件
+// 其中goFullScreen Api调用: playerView.getOrientationHelper().goLandscape();
 
 //Custom remove position
 portCtrlLayer.removePart(R.id.k_position_tv);
-//Custom remove duration
-portCtrlLayer.removePart(R.id.k_duration_tv);
-//Custom change top background
-portCtrlLayer.findPart(R.id.k_ctrl_layer_part_top)
-    .setBackgroundResource(android.R.color.transparent);
 //Custom change bottom background
 portCtrlLayer.findPart(R.id.k_ctrl_layer_part_bottom)
     .setBackgroundResource(android.R.color.transparent);
 //Custom change middle background
 portCtrlLayer.findPart(R.id.k_ctrl_layer_part_middle)
     .setBackgroundResource(android.R.color.transparent);
-//Custom change middle play/pause/buffer size
+//Custom change middle play/pause/buffer/... size
 ((ImageButton) portCtrlLayer.findPart(R.id.k_play,
     Metrics.dp2px(this, 31f), Metrics.dp2px(this, 31f))).setScaleType(ScaleType.FIT_CENTER);
-((ImageButton) portCtrlLayer.findPart(R.id.k_pause,
-    Metrics.dp2px(this, 31f), Metrics.dp2px(this, 31f))).setScaleType(ScaleType.FIT_CENTER);
-portCtrlLayer.findPart(R.id.part_buffer,
-    Metrics.dp2px(this, 51f), Metrics.dp2px(this, 51f));
-//Custom change tips background
-portCtrlLayer.findPart(R.id.part_tips_tv)
-    .setBackgroundResource(R.color.bg_video_queue_common);
+//最后如果上面的改动中,涉及到SmartView(k_play/pause..) 需要去更新下
 portCtrlLayer.updateSmartView();
 ```
 
-
-
-
+### Example 5: 简单的使用PlayerService/Binding
+首先在AndroidManifest文件中, 添加service.
+```xml
+<service android:name="com.jcodeing.kmedia.service.PlayerService"/>
 ```
-<!--如果这个控制层用于自定义浮窗View中,你还可以使用一下公共id-->
-<!--@id/k_floating_view_close -->
-<!--@id/k_floating_view_drag_location -->
-<!--@id/k_floating_view_drag_size -->
-<!--使用公共id k_floating_xxx 可以帮你快速实现浮窗的,关闭,拖动改变/位置/大小等需求-->
+然后在Activity中进行PlayerBinding. [点击查看源码片段](https://github.com/jcodeing/KMedia/search?q=Player service bind player,+Binding finish. Can play.)
+```java
+player = new PlayerBinding(this, PlayerService.class, new BindPlayer() {
+  @Override
+  public IPlayer onBindPlayer() {
+    return new Player(getApplicationContext())
+        .init(new ExoMediaPlayer(getApplicationContext()));
+  }//Player service bind player, call back.(if is bound, not call back)
+}, new BindingListener() {
+  @Override
+  public void onFirstBinding(PlayerService service) {
+    //do something player service init operation.
+    //可以在这里给服务设置一个Notifier,来实现在通知栏中控制音频播放
+    service.setNotifier(new AudioQueueNotifier());
+  }//First binding call back.(if first binding finish, not call back)
+
+  @Override
+  public void onBindingFinish() {
+    player.xxx();
+  }//Binding finish. Can play.
+});
+}
 ```
 
 ### Example X: 更多例子请参考KMedia-Demo
+
+#### [MainActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainActivity.java)
+[activity_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_main.xml) & [ctrl_layer_custom_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_custom_main.xml)  
+[MainPortCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainPortCtrlLayer.java) & [ctrl_layer_port_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_port_main.xml)  
+[MainLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainLandCtrlLayer.java) & [ctrl_layer_land_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_land_main.xml)  
+[MainVFloatingView](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/MainVFloatingView.java) & [floating_video_view_main](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/floating_video_view_main.xml)
+
+#### [AudioQueueActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueActivity.java)
+[activity_queue_audio](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_queue_audio.xml) & [item_audio_queue](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_audio_queue.xml)  
+[AudioQueueNotifier](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/AudioQueueNotifier.java) & [ANotifier](https://github.com/jcodeing/KMedia-Core/blob/develop/src/main/java/com/jcodeing/kmedia/worker/ANotifier.java)
+
+#### [VideoQueueActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueActivity.java)
+[activity_queue_video](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_queue_video.xml) & [item_video_queue_port](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_video_queue_port.xml)  
+[VideoQueueLandCtrlLayer](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoQueueLandCtrlLayer.java) & [ctrl_layer_land_queue](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/ctrl_layer_land_queue.xml) &  [item_video_queue_land](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/item_video_queue_land.xml)
+
+#### [VideoMultipleActivity](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleActivity.java)
+[layout_activity_multiple_video](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/activity_multiple_video.xml)  
+[VideoMultipleFloatingView](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/java/com/jcodeing/kmedia/demo/VideoMultipleFloatingView.java) & [floating_video_view_multiple](https://github.com/jcodeing/KMedia/blob/develop/demo/src/main/res/layout/floating_video_view_multiple.xml)
+
 
 ## 文档
 * The [KMedia-Core](https://jcodeing.github.io/KMedia-Core) JavaDoc
 * The [KMedia-Uie](https://jcodeing.github.io/KMedia-Uie) JavaDoc
 
-### API - Player:
+### [API - Player](https://github.com/jcodeing/KMedia-Core/blob/develop/src/main/java/com/jcodeing/kmedia/IPlayer.java)
+Video
+```java
+void setVideo(SurfaceView surfaceView);
+void setVideo(TextureView textureView);
+void clearVideo();
+```
+AB
+```java
+P setAB(long startPos, long endPos);
+P setABLoop(int loopMode, int loopInterval);
+P setAB(long startPos, long endPos, int loopMode, int loopInterval);
+P setClearAB(boolean autoClear);
+///////////////////////////////////////////////////////////
+player.setAB(abStart, abEnd, abLoop, abLoopInterval).play();
+```
+PlaybackSpeed
+```java
+boolean setPlaybackSpeed(float speed);
+float getPlaybackSpeed();
+```
+SeekTo
+```java
+boolean seekTo(long ms);
+boolean seekTo(long ms, int processingLevel);
+void seekToPending(long ms);
+long seekToProgress(int progress, int progressMax);
+boolean fastForwardRewind(long ms);
+```
+PositionUnit
+```java
+P setPositionUnitList(IPositionUnitList posUnitList);
+int getCurrentPositionUnitIndex();
+void setCurrentPositionUnitIndex(int posUnitIndex);
+long seekToPositionUnitIndex(int posUnitIndex);
+int calibrateCurrentPositionUnitIndex(long position);
+P setEnabledPositionUnitLoop(boolean enabled, int loopMode, int loopInterval);
+P setPositionUnitLoopIndexList(ArrayList<Integer> posUnitLoopIndexList);
+```
+
+### Public
 
 
 ## 注意
