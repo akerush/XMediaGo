@@ -75,18 +75,18 @@ player.shutdown();
 ```
 
 ### Example 2: 简单的视频浮窗
-#### 把Player交给VideoFloatingWindowController去显示即可浮屏播放.
+把Player交给VideoFloatingWindowController去显示即可浮屏播放.
 ```java
 Player player = new Player(context).init(new ExoMediaPlayer(context));
 new VideoFloatingWindowController(getApplicationContext()).show(player);
 layer.play(Uri.parse("video"));
 ```
-#### 最后当你确定不再播放时, 请调用以下方法去释放资源对象.{#2}
+最后当你确定不再播放时, 请调用以下方法去释放资源对象.{#2}
 ```java
 player.shutdown();
 vFloatingWinControler.hide();
 ```
-#### [温馨提示,请根据你的具体使用需求合理申请WINDOW权限.](#1) [点击查看源码片段](/core/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)
+温馨提示,请根据你的具体使用需求合理申请WINDOW权限. [点击查看源码片段](/core/src/main/java/com/jcodeing/kmedia/window/FloatingWindowController.java#L127-L135)
 ```java
 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || OS.i().isMIUI()) {
   //<!--Using WindowManager.LayoutParams.TYPE_PHONE For Floating　Window　View-->
@@ -515,6 +515,4 @@ git remote add fork "Your KMedia-Mpe Remote Repositorie Path"
 可以到你Fork的Github仓库主页, 点击 `Pull request` 去 Create pull request 给我.  
 我看到后, 会第一时间处理你的 request. 从而时KMedia更加完善和强固.
 
-[test1](#1)  
-[test2](#2)
 ### =========================感谢你使用KMedia=========================
