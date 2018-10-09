@@ -1,3 +1,5 @@
+README!!! -> Read the Fucking Source Code
+
 ![logo](/readme/icon/kmedia_logo.svg)
 
 KMedia是一个Android应用级媒体框架,它可以助你快速搭建媒体应用.
