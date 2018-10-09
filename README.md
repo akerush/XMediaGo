@@ -1,4 +1,4 @@
-README!!! -> Read the Fucking Source Code
+README!!! OR-> Read the Fucking Source Code ///👨‍💻‍ ☀️ 🌧 ⚡️ 🌪 🌫 ❄️ 👨‍💻‍
 
 ![logo](/readme/icon/kmedia_logo.svg)
 
