@@ -1,4 +1,4 @@
-README!!!😴 OR-> Read The Fucking 👨‍💻‍Source Code //☀️ 🌧 ⚡️ 🌪 🌫 ❄️
+README!!😴 OR-> Read The Fucking 👨‍💻‍Source Code //☀️ 🌧 ⚡️ 🌪 🌫 ❄️...
 
 ![logo](/readme/icon/kmedia_logo.svg)
 
